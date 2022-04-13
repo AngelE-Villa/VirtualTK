@@ -1,0 +1,96 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.form-register{
+  width: 450px;
+  background: lightgray;
+  padding: 30px;
+  margin: auto;
+  margin-top: 100px;
+  border-radius: 60px;
+  font-family: Calibri;
+  color: white;
+  box-shadow: 7px 13px 37px #000;
+  border-color: cadetblue;
+  border-width: 10px;
+  border-style: solid;
+}
+
+.form-register h4{
+  font-size: 22px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: cadetblue;
+}
+
+.controls{
+  width: 40%;
+  padding: 5px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  margin-left: 20px;
+  margin-right: 10px;
+  border: 1px solid #1f53c5;
+  font-family: Calibri;
+  font-size: 18px;
+}
+
+.form-register p{
+  height: 40px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 40px;
+}
+
+.form-register a{
+  color:white;
+  text-decoration: none;
+}
+
+.form-register a:hover{
+  color:white;
+  text-decoration: underline;
+}
+
+.form-register .botons{
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+  width:150px;
+  height:45px;
+  border-radius:45px;
+  cursor:pointer;
+  border:none;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-weight:bold;
+  box-shadow: 0px 8px 15px
+    rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.form-register .botons:hover{
+  background:darkcyan;
+  transform:translateY(-7px);
+  color:#fff;
+  box-shadow: 0px 10px 25px
+  rgba(46, 223, 229, 0.445);
+}
+
+body{
+  background-image: url("../Recursos/banner.png");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+img {
+  height: 30%;
+  width: 30%;
+  display:block;
+  margin: 20px auto;
+}
+
+
