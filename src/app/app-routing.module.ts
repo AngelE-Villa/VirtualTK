@@ -4,12 +4,14 @@ import {InicioSessionComponent} from "./inicio-session/inicio-session.component"
 import {PaginaPrincipalComponent} from "./pagina-principal/pagina-principal.component";
 import {AppComponent} from "./app.component";
 import {PaginaElementosComponent} from "./pagina-elementos/pagina-elementos.component";
+import {LogginComponent} from "./loggin/loggin.component";
 
 const routes: Routes = [
   {path:"Ingreso",component: InicioSessionComponent},
   {path:'', component: PaginaPrincipalComponent},
   {path:"Listado", component: PaginaElementosComponent},
-  {path: "Solicitud", component: PaginaElementosComponent}];
+  {path: "Solicitud", component: PaginaElementosComponent},
+  {path:"Registro", component: LogginComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
