@@ -16,8 +16,9 @@ import {GalleriaModule} from "primeng/galleria";
 import { EncabezadoComponent } from './encabezado/encabezado.component';
 import { PieComponent } from './pie/pie.component';
 import {SlideMenuModule} from "primeng/slidemenu";
-import {ReactiveFormsModule} from "@angular/forms";
-import {DialogModule} from "primeng/dialog";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+
+
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {DialogModule} from "primeng/dialog";
     GalleriaModule,
     SlideMenuModule,
     ReactiveFormsModule,
-    DialogModule
+    FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

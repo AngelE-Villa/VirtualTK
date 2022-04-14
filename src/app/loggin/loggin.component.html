@@ -7,22 +7,23 @@
 
   <body>
     <section class="form-register">
-      <h4> ------ FORMULARIO REGISTRO ------ </h4>
+      <h4> FORMULARIO REGISTRO  </h4>
       <img src="https://cdn-icons-png.flaticon.com/512/3534/3534139.png">
-      <input class="controls" type="text" name="nombres" id="nombres" placeholder="Nombre" required>
-      <input class="controls" type="text" name="apellidos" id="apellidos" placeholder="Apellido" required>
-      <input class="controls" type="text" name="usuario" id="usuario" placeholder="Usuario" required>
-      <select class="controls" name="Género" id="genero" required>
+      <input class="controls" type="text" name="nombres" id="nombres" placeholder="Nombre" required [(ngModel)]="nombreI">
+      <input class="controls" type="text" name="apellidos" id="apellidos" placeholder="Apellido" required [(ngModel)]="apellidosI">
+      <input class="controls" type="text" name="usuario" id="usuario" placeholder="Usuario" required [(ngModel)]="usuarioI">
+      <select class="controls" name="Género" id="genero" required [(ngModel)]="generoI">
         <option selected disabled hidden value="">Género</option>
         <option>Masculino</option>
         <option>Femenino</option>
 
       </select>
-      <input class="controls" type="password" name="clave" id="clave" placeholder="Contraseña" required>
-      <input class="controls" type="password" name="claveConfirmar" id="claveConfirmar" placeholder="Digite de nuevo su contraseña" required>
-      <input class="botons" type="submit" value="Registrar">
+      <input class="controls" type="password" name="clave" id="clave" placeholder="Contraseña" required [(ngModel)]="contraI">
+      <input class="controls" type="password" name="claveConfirmar" id="claveConfirmar" [(ngModel)]="contra2I" placeholder="Digite de nuevo su contraseña" required>
+      <input class="botons" type="submit" value="Registrar"  (click)="guardar()">
 
-      <p><a href="">Ya tengo una cuenta</a></p>
+
+      <p><a href="/Ingreso">Ya tengo una cuenta</a></p>
 
     </section>
   </body>
