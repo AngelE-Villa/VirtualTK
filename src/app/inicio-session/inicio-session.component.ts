@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {UserService} from "../ConexionServicios/UserService";
 
 
 @Component({
@@ -13,8 +14,10 @@ export class InicioSessionComponent implements OnInit {
   contraseña:any;
   InicioSesion:any;
   opc:boolean;
-  constructor(private _formBuilder:FormBuilder) {
+  servidor:UserService;
+  constructor(private _formBuilder:FormBuilder, servidor:UserService) {
     this.opc=true;
+    this.servidor=servidor;
 
   }
 
@@ -24,8 +27,10 @@ export class InicioSessionComponent implements OnInit {
     });
   }
 
-  guardar(){
+  ingresar(){
+    this.servidor.getUsuarios().subscribe((x: any) =>{
 
+    });
   }
 
 

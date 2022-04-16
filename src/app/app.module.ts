@@ -17,6 +17,7 @@ import { EncabezadoComponent } from './encabezado/encabezado.component';
 import { PieComponent } from './pie/pie.component';
 import {SlideMenuModule} from "primeng/slidemenu";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
 
 
@@ -41,7 +42,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     GalleriaModule,
     SlideMenuModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
 
   ],
   providers: [],

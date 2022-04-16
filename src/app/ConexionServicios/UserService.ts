@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 // @ts-ignore
-import {usuarioModelo} from "src/app/Modelos/usuarioModelo"
+import {UsuarioModelo, usuarioModelo} from "src/app/Modelos/usuarioModelo"
 
 @Injectable({
   providedIn:"root"
@@ -21,9 +21,14 @@ export class UserService {
     return this.http.get<usuarioModelo>(this.base_url);
   }
 
+  url:String="";
 //crear usuarios
   create(usuario: usuarioModelo):Boolean{
-    if(this.http.post(this.base_url+"user/", usuario)){
+    console.log(usuario)
+    this.url= this.base_url+"user";
+    if(this.http.post(this.base_url+"user", usuario)){
+      console.log(this.url + "   entra")
+
       return true;
     }else
     {
@@ -31,6 +36,13 @@ export class UserService {
     }
     //return this.http.post(this.base_url+"user/", usuario).then(res => res.data);
   }
+
+  /*create(usuario:UsuarioModelo){
+    return this.http.post(`${this.base_url}user`, {
+      nombres: usuario.nombres,
+      apellidos:usuario.apellidos
+    }    )
+  }*/
 
   update(usuario: usuarioModelo, id:String):Boolean{
     if(this.http.put(this.base_url+"user/"+id, usuario)){
