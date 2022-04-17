@@ -10,10 +10,10 @@
   <section class="form-register">
     <h4> INICIO DE SESIÓN </h4>
     <img src="http://bibliotecasvirtualesmundotecnologico.weebly.com/uploads/5/8/8/1/58813631/1173726.png?399">
-    <input class="controls" type="text" name="usuario" id="usuario" placeholder="Usuario" required>
+    <input class="controls" type="text" name="usuario" id="usuario" placeholder="Usuario" required [(ngModel)]="usuarioL">
 
-    <input class="controls" type="password" name="clave" id="clave" placeholder="Contraseña" required>
-    <input class="botons" type="submit" value="Ingresar">
+    <input class="controls" type="password" name="clave" id="clave" placeholder="Contraseña" required [(ngModel)]="contraL">
+    <input class="botons" type="submit" (click)="ingresar()"  value="Ingresar">
 
     <p><a href="/Registro">Aun no tienes cuenta? Registrate AQUÍ</a></p>
 

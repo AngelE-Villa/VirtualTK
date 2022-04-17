@@ -6,6 +6,8 @@ import {UserService} from "../ConexionServicios/UserService";
 import {ActivatedRoute} from "@angular/router";
 import {UsuarioModelo} from "../Modelos/usuarioModelo";
 import {HttpClient} from "@angular/common/http";
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-loggin',
@@ -22,8 +24,8 @@ export class LogginComponent implements OnInit {
   contra2I:any;
 
 
-  msgs1: any;
    servicio:UserService;
+
   constructor( servicio:UserService ) {
     this.servicio = servicio;
     servicio.getUsuarios().subscribe((x: any) =>{
@@ -40,22 +42,32 @@ export class LogginComponent implements OnInit {
     if(this.contraI==this.contra2I){
     console.log(this.usuarioI, this.contraI)
     this.enviar();
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Registro Correcto BIENVENIDO',
+        showConfirmButton: false,
+        timer: 1500
+      })
     }else
     {
       console.log( "no coinciden")
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Error! ',
+        text:'No se pudo completar el registro Revise sus datos y vuelva a intentarlo',
+        showConfirmButton: true,
+
+      })
+
+      this.limpiar()
     }
     }
 
   enviar(){
 
-    //let usu:UsuarioModelo;
-    /*let usu={
-      nombres:this.nombreI,
-      apellidos:this.apellidosI,
-      genero:this.generoI,
-      usuario:this.usuarioI,
-      password:this.contraI
-    }*/
+
     let usu={
       "nombres" : this.nombreI,
       "apellidos" : this.apellidosI,
@@ -69,7 +81,15 @@ export class LogginComponent implements OnInit {
       console.log("error")
     }
 
+  }
 
+  limpiar () {
+    this.nombreI=""
+      this.apellidosI=""
+    this.usuarioI=""
+      this.contraI=""
+    this.contra2I=""
+    this.generoI=""
   }
 
 

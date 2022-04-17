@@ -37,15 +37,18 @@ export class UserService {
     //return this.http.post(this.base_url+"user/", usuario).then(res => res.data);
   }
 
-  /*create(usuario:UsuarioModelo){
-    return this.http.post(`${this.base_url}user`, {
-      nombres: usuario.nombres,
-      apellidos:usuario.apellidos
-    }    )
-  }*/
 
   update(usuario: usuarioModelo, id:String):Boolean{
     if(this.http.put(this.base_url+"user/"+id, usuario)){
+      return true;
+    }else
+    {
+      return false;
+    }
+  }
+
+  log(usuario: usuarioModelo, contraseña: String, usuario2:String ):Boolean{
+    if(this.http.get(this.base_url, usuario)){
       return true;
     }else
     {
