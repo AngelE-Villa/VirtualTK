@@ -1,6 +1,18 @@
-.table{
-  background-color: aquamarine;
 
+.table{
+  border:4px;
+  width: 70%;
+  margin:auto;
+  height: 100%;
+  padding:30px;
+  margin-top: 90px;
+}
+.titulares{
+  background-color: lightgray;
+}
+
+.resultado{
+  background-color:bisque;
 }
 
 
