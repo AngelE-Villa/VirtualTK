@@ -1,5 +1,33 @@
 <app-encabezado></app-encabezado>
-<div>
+<table>
+  <tbody>
+  <ng-template pTemplate="header">
+    <tr >
+      <th *ngFor="let columna of filas">
+        {{columna.header}}
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-usuario>
+    <tr>
+      <!--<td *ngFor="let col of columnas">
+        {{usuario[col.field]}}
+      </td >-->
+      <td *ngFor="let col of filas">
 
-</div>
+        <div [ngSwitch]="col.field">
+            <span *ngSwitchCase="'fechaNaci'">
+              {{usuario[col.field] |date:"dd/MM/YYYY"}}
+            </span>
+
+          <span *ngSwitchDefault>{{usuario[col.field] }}</span>
+        </div>
+      </td>
+
+
+
+    </tr>
+  </ng-template>
+  </tbody>
+</table>
 <app-pie></app-pie>

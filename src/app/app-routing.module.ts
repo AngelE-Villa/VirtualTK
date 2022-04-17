@@ -5,13 +5,15 @@ import {PaginaPrincipalComponent} from "./pagina-principal/pagina-principal.comp
 import {AppComponent} from "./app.component";
 import {PaginaElementosComponent} from "./pagina-elementos/pagina-elementos.component";
 import {LogginComponent} from "./loggin/loggin.component";
+import {RegistroLibrosComponent} from "./registro-libros/registro-libros.component";
 
 const routes: Routes = [
   {path:"Ingreso",component: InicioSessionComponent},
   {path:'', component: PaginaPrincipalComponent},
   {path:"Listado", component: PaginaElementosComponent},
   {path: "Solicitud", component: PaginaElementosComponent},
-  {path:"Registro", component: LogginComponent}];
+  {path:"Registro", component: LogginComponent},
+  {path:"RegistroLibros", component: RegistroLibrosComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

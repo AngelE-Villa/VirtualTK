@@ -1,0 +1,32 @@
+<html>
+<head>
+  <title>INGRESO DE LIBROS</title>
+  <link rel="stylesheet" href="registro-libros.component.css">
+</head>
+<body>
+<div>
+-
+<form method="POST" class="formulario">
+  <h4>---- Ingreso de Libros ----</h4>
+  <img src="https://cdn-icons.flaticon.com/png/512/3145/premium/3145765.png?token=exp=1650215516~hmac=c63eb2bc80e9ae2780cd58a7ea9b751a" alt="">
+  <input class="controls" type="text" name="id" id="idLibro" placeholder="ID" required>
+  <input class="controls" type="text" name="titulo" id="titulo" placeholder="Título" required>
+  <input class="controls" type="text" name="autor" id="autor" placeholder="Autor" required>
+  <input class="controls" type="text" name="editorial" id="editorial" placeholder="Editorial" required>
+  <input class="controls" type="date" name="fecha" id="fecPubl" placeholder="Fecha de Publicacion" required>
+  <input class="controls" type="text" name="idioma" id="idioma" placeholder="Idioma" required>
+  <input class="controls" type="text" name="clasificacion" id="clasificacion" placeholder="Clasificación" required>
+  <input class="controls" type="text" name="ubicacion" id="ubicacion" placeholder="Ubicación" required>
+  <input class="controls" type="text" name="link" id="link" placeholder="URL" required>
+  <select class="controls" name="Disponibilidad" id="estado" required>
+    <option selected disabled hidden value="">Disponibilidad</option>
+    <option>Disponible</option>
+    <option>No Disponible</option>
+  </select>
+  <textarea class="arearesumen" name="resumen" id="resumen" cols="40" rows="5" placeholder="Resúmen" required></textarea>
+  <input class="botons" type="submit" value="Registrar">
+
+</form>
+</div>
+</body>
+</html>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../ConexionServicios/UserService";
 import Swal from "sweetalert2";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -20,7 +21,7 @@ export class InicioSessionComponent implements OnInit {
   contraL:any;
   usuarioBD : Array<any> = [];
 
-  constructor(private _formBuilder:FormBuilder, servidor:UserService) {
+  constructor(private _formBuilder:FormBuilder, servidor:UserService, private router:Router) {
 
     this.servidor=servidor;
     servidor.getUsuarios().subscribe((x:any)=>{
@@ -34,7 +35,9 @@ export class InicioSessionComponent implements OnInit {
 
     });
   }
+
   bool:Boolean =false;
+  nombreStorage: String= "";
   ingresar(){
 
         let opc =this.usuarioBD.length;
@@ -44,6 +47,9 @@ export class InicioSessionComponent implements OnInit {
 
       if((abc.usuario.toString())==(this.usuarioL) && (abc.password.toString())==(this.contraL.toString())){
           this.bool=true;
+          localStorage.setItem("usu", JSON.stringify(this.usuarioL))
+        localStorage.setItem("nombres", JSON.stringify(abc.nombres))
+        localStorage.setItem("apellidos", JSON.stringify(abc.apellidos))
       }
     }
     if(this.bool==true){
@@ -63,6 +69,8 @@ export class InicioSessionComponent implements OnInit {
       showConfirmButton: false,
       timer: 1500
     })
+    this.router.navigateByUrl('/Listado')
+
   }
 
   error(){

@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaginaElementosComponent implements OnInit {
 
-  constructor() { }
+  LibrosList: any[]=[];
+  filas:any[];
+
+  constructor() {
+    this.filas=[
+      {field:'nombre', header:'Nombre'},
+      {field:'apellidos', header:'Apellido'},
+      {field:'correo', header:'Correo'},
+      {field:'fechaNaci', header:'Fecha Nacimiento'},
+      {field:'opcionesCiudad', header: 'Ciudad de Residencia'},
+      {field:'edad', header: 'Edad'}
+    ]
+  }
 
   ngOnInit(): void {
+
   }
 
 }

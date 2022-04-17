@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 // @ts-ignore
 import {UsuarioModelo, usuarioModelo} from "src/app/Modelos/usuarioModelo"
+import {LogginComponent} from "../loggin/loggin.component";
 
 @Injectable({
   providedIn:"root"
@@ -26,15 +27,14 @@ export class UserService {
   create(usuario: usuarioModelo):Boolean{
     console.log(usuario)
     this.url= this.base_url+"user";
-    if(this.http.post(this.base_url+"user", usuario)){
-      console.log(this.url + "   entra")
 
-      return true;
-    }else
-    {
-      return false;
-    }
-    //return this.http.post(this.base_url+"user/", usuario).then(res => res.data);
+
+     this.http.post(this.base_url+"user/", usuario).subscribe((reg)=> {
+      console.log(reg)
+       return true;
+    })
+
+    return false;
   }
 
 

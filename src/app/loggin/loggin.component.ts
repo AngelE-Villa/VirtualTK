@@ -26,17 +26,19 @@ export class LogginComponent implements OnInit {
 
    servicio:UserService;
 
+
   constructor( servicio:UserService ) {
     this.servicio = servicio;
     servicio.getUsuarios().subscribe((x: any) =>{
       console.log(x)
     });
+
   }
 
   ngOnInit(): void {
 
-  }
 
+  }
 
   guardar(){
     if(this.contraI==this.contra2I){
@@ -67,16 +69,16 @@ export class LogginComponent implements OnInit {
 
   enviar(){
 
-
     let usu={
-      "nombres" : this.nombreI,
-      "apellidos" : this.apellidosI,
-      "genero" : this.generoI,
-      "usuario" : this.usuarioI,
-      "password" : this.contraI
+      "nombres" : this.nombreI.toString(),
+      "apellidos" : this.apellidosI.toString(),
+      "genero" : this.generoI.toString(),
+      "usuario" : this.usuarioI.toString(),
+      "password" : this.contraI.toString()
     }
     if(this.servicio.create(usu)){
       console.log("creado");
+
     }else{
       console.log("error")
     }
