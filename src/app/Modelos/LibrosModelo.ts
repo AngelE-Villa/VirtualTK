@@ -1,6 +1,5 @@
 
 export class LibrosModelo{
-  _id:any;
   titulo:any;
   autores:any;
   editorial:any;
@@ -9,6 +8,5 @@ export class LibrosModelo{
   clasificacion:any;
   resumen:any;
   link:any;
-  ubicaion:any;
   estado:any;
 }

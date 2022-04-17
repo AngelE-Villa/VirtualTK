@@ -3,7 +3,6 @@ import { Injectable } from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 // @ts-ignore
-import {usuarioModelo} from "src/app/Modelos/usuarioModelo"
 import {LibrosModelo} from "../Modelos/LibrosModelo";
 
 @Injectable({
@@ -23,12 +22,14 @@ export class LibrosService {
 
 //crear usuarios
   createLibros(libro: LibrosModelo):Boolean{
-    if(this.http.post(this.base_url+"books/", libro)){
+    console.log(libro)
+
+    this.http.post(this.base_url+"book/", libro).subscribe((reg)=> {
+      console.log(reg)
       return true;
-    }else
-    {
-      return false;
-    }
+    })
+
+   return false;
     //return this.http.post(this.base_url+"user/", usuario).then(res => res.data);
   }
 

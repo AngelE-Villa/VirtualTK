@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {LibrosService} from "../ConexionServicios/LibrosService";
 
 @Component({
   selector: 'app-pagina-elementos',
@@ -7,18 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaginaElementosComponent implements OnInit {
 
-  LibrosList: any[]=[];
-  filas:any[];
+  servicio:LibrosService;
+  librosLista: Array<any>=[];
+  libro:any;
 
-  constructor() {
-    this.filas=[
-      {field:'nombre', header:'Nombre'},
-      {field:'apellidos', header:'Apellido'},
-      {field:'correo', header:'Correo'},
-      {field:'fechaNaci', header:'Fecha Nacimiento'},
-      {field:'opcionesCiudad', header: 'Ciudad de Residencia'},
-      {field:'edad', header: 'Edad'}
-    ]
+  constructor( servicio:LibrosService) {
+    this.servicio = servicio;
+
+    servicio.getLibros().subscribe((x: any) => {
+      this.librosLista = x
+    });
   }
 
   ngOnInit(): void {

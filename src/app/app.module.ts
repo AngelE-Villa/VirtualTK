@@ -18,6 +18,10 @@ import { PieComponent } from './pie/pie.component';
 import {SlideMenuModule} from "primeng/slidemenu";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import {registerLocaleData} from "@angular/common";
+import {RegistroLibrosComponent} from "./registro-libros/registro-libros.component";
+import { LibrosComponent } from './libros/libros.component';
+
 
 
 
@@ -30,7 +34,9 @@ import {HttpClientModule} from "@angular/common/http";
     InicioSessionComponent,
     PaginaElementosComponent,
     EncabezadoComponent,
-    PieComponent
+    PieComponent,
+    RegistroLibrosComponent,
+    LibrosComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +51,7 @@ import {HttpClientModule} from "@angular/common/http";
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+
 
   ],
   providers: [],
