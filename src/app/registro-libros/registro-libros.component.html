@@ -7,15 +7,88 @@
 <div>
 -
 <form method="POST" class="formulario">
-  <h4>---- Ingreso de Libros ----</h4>
-  <img src="https://cdn-icons.flaticon.com/png/512/3145/premium/3145765.png?token=exp=1650215516~hmac=c63eb2bc80e9ae2780cd58a7ea9b751a" alt="">
-  <input class="controls" type="text" name="id" id="idLibro" placeholder="ID" required>
+  <h4>Ingreso de Libros</h4>
+  <img src="https://cdn-icons.flaticon.com/png/512/3145/premium/3145765.png?token=exp=1650211717~hmac=4d6015cafcc5957a85aa8586159c19c4" alt="">
   <input class="controls" type="text" name="titulo" id="titulo" placeholder="Título" required>
   <input class="controls" type="text" name="autor" id="autor" placeholder="Autor" required>
   <input class="controls" type="text" name="editorial" id="editorial" placeholder="Editorial" required>
   <input class="controls" type="date" name="fecha" id="fecPubl" placeholder="Fecha de Publicacion" required>
   <input class="controls" type="text" name="idioma" id="idioma" placeholder="Idioma" required>
-  <input class="controls" type="text" name="clasificacion" id="clasificacion" placeholder="Clasificación" required>
+  <select class="controls" name="Clasificacion" id="clasificacion" required>
+    <option selected disabled hidden value value="">Clasificación</option>
+    <option style="font-weight: bold">000 Generalidades</option>
+    <option>010 Bibliografía</option>
+    <option>020 Bibliotecología y ciencias de la información</option>
+    <option>030 Enciclopedias generales </option>
+    <option style="font-weight: bold">100 Publicaciones en serie</option>
+    <option>100 Filosofía y psicología</option>
+    <option>110 Metafísica</option>
+    <option>120 Conocimiento, causa, fin, hombre </option>
+    <option>130 Parapsicología, ocultismo, fenómenos paranormales</option>
+    <option style="font-weight: bold">200 Religión</option>
+    <option>210 Filosofía y teoría de la religión</option>
+    <option>220 Biblia</option>
+    <option>230 Teología cristiana</option>
+    <option>240 Moral y prácticas cristianas</option>
+    <option>250 Iglesia local y órdenes religiosas</option>
+    <option>260 Teología social y eclesiástica</option>
+    <option style="font-weight: bold">300 Ciencias sociales</option>
+    <option>310 Estadística</option>
+    <option>320 Ciencia política</option>
+    <option>330 Economía</option>
+    <option>340 Derecho</option>
+    <option style="font-weight: bold">400 Lenguas</option>
+    <option>410 Lingüística</option>
+    <option>420 Inglés e inglés antiguo</option>
+    <option>430 Lenguas germánicas; alemán</option>
+    <option>440 Lenguas romances; francés</option>
+    <option>450 Italiano, rumano, rético</option>
+    <option>460 Español y portugués</option>
+    <option>470 Lenguas itálicas; latín</option>
+    <option>480 Lenguas helénicas; griego clásico</option>
+    <option>490 Otras lenguas</option>
+    <option style="font-weight: bold">500 Matemáticas y ciencias naturales</option>
+    <option>510 Matemáticas</option>
+    <option>520 Astronomía y ciencias afines</option>
+    <option>530 Física</option>
+    <option>540 Química y ciencias afines</option>
+    <option>550 Geociencias</option>
+    <option style="font-weight: bold">600 Tecnología y ciencias aplicadas</option>
+    <option>610 Ciencias médicas</option>
+    <option>620 Ingeniería y operaciones afines</option>
+    <option>630 Agricultura y tecnologías afines</option>
+    <option>640 Economía doméstica</option>
+    <option>650 Servicios administrativos empresariales</option>
+    <option style="font-weight: bold">700 Artes</option>
+    <option>710 Urbanismo y arquitectura del paisaje</option>
+    <option>720 Arquitectura</option>
+    <option>730 Artes plásticas; escultura</option>
+    <option>740 Dibujo, artes decorativas</option>
+    <option>750 Pintura y pinturas</option>
+    <option>760 Artes gráficas; grabados</option>
+    <option style="font-weight: bold">800 Literatura</option>
+    <option>810 Literatura americana en inglés</option>
+    <option>820 Literatura inglesa e inglesa antigua</option>
+    <option>830 Literaturas germánicas</option>
+    <option>840 Literaturas de las lenguas romances</option>
+    <option>850 Literaturas italiana, rumana</option>
+    <option>860 Literaturas española y portuguesa</option>
+    <option>870 Literaturas de las lenguas itálicas</option>
+    <option>880 Literaturas de las lenguas helénicas</option>
+    <option>890 Literaturas de otras lenguas</option>
+    <option style="font-weight: bold">900 Historia y geografía</option>
+    <option>910 Geografía; viajes</option>
+    <option>920 Biografía y genealogía</option>
+    <option>930 Historia del mundo antiguo</option>
+    <option>940 Historia de Europa</option>
+    <option>950 Historia de Asia</option>
+    <option>960 Historia de África</option>
+    <option>970 Historia de América del Norte</option>
+    <option>980 Historia de América del Sur</option>
+    <option>990 Historia de otras regiones</option>
+
+
+  </select>
   <input class="controls" type="text" name="ubicacion" id="ubicacion" placeholder="Ubicación" required>
   <input class="controls" type="text" name="link" id="link" placeholder="URL" required>
   <select class="controls" name="Disponibilidad" id="estado" required>

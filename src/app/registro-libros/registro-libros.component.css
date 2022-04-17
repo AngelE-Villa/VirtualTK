@@ -5,14 +5,14 @@
 }
 
 body{
-  background-image: url("../Recursos/banner.png");
+  background-image: url("../img/banner.png");
   background-size: cover;
-  height: 100vh;
+  height: 130vh;
   width: 100%;
 }
 
 .formulario{
-  width: 600px;
+  width: 550px;
   background: lightgray;
   padding: 30px;
   margin: auto;
@@ -27,7 +27,7 @@ body{
 }
 
 .formulario h4{
-  font-size: 30px;
+  font-size: 22px;
   margin-bottom: 20px;
   text-align: center;
   color: cadetblue;
@@ -61,7 +61,7 @@ body{
 
 .controls{
   width: 40%;
-  padding: 5px;
+  padding: 3px;
   border-radius: 4px;
   margin-bottom: 16px;
   margin-left: 20px;
