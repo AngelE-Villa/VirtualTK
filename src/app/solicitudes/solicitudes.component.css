@@ -18,3 +18,32 @@ td, th{
   border: 3px solid #999;
   padding: 0.5rem;
 }
+
+.botons{
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+  width:150px;
+  height:45px;
+  border-radius:45px;
+  cursor:pointer;
+  border:none;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-weight:bold;
+  box-shadow: 0px 8px 15px
+  rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.botons:hover{
+  background:darkcyan;
+  transform:translateY(-7px);
+  color:#fff;
+  box-shadow: 0px 10px 25px
+  rgba(46, 223, 229, 0.445);
+}
+
+.p-button-danger{
+  margin: auto;
+}

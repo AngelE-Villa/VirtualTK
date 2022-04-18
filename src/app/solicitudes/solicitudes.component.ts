@@ -18,14 +18,22 @@ export class SolicitudesComponent implements OnInit {
   'Estado',
   'Genero',
   'Usuario',
-  'Libro'];
+  'Libro',
+  'Editar',
+  'Eliminar'];
  filas:Array<any>=[];
   servicio:SolicitudesService;
   SolicitudesLista:Array<any>=[];
-
+  comentarioU:any;
+  estadoU:any;
+  generoU:any;
+  usuarioU: UsuarioModelo= new UsuarioModelo();
+  libroU:LibrosModelo= new LibrosModelo();
+  visibilidad:Boolean;
 
   constructor(servicio:SolicitudesService) {
 
+    this.visibilidad=false;
     this.servicio=servicio;
     servicio.getSolicitudes().subscribe((x: any) => {
       this.SolicitudesLista = x
@@ -43,7 +51,19 @@ export class SolicitudesComponent implements OnInit {
   ngOnInit() {
 
   }
+  /*
+  valores(){
+    twoTbody.addEventListener("click", )
+  event.target.tagName=="TD"
+  }*/
 
+  editar(){
+
+  }
+
+  eliminar(){
+
+  }
 
 }
 

@@ -22,6 +22,7 @@ import {registerLocaleData} from "@angular/common";
 import {RegistroLibrosComponent} from "./registro-libros/registro-libros.component";
 import { LibrosComponent } from './libros/libros.component';
 import {SolicitudesComponent} from './solicitudes/solicitudes.component';
+import {DialogModule} from "primeng/dialog";
 
 
 
@@ -53,6 +54,7 @@ import {SolicitudesComponent} from './solicitudes/solicitudes.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    DialogModule,
 
   ],
   providers: [],
