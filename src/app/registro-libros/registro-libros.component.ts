@@ -42,18 +42,21 @@ export class RegistroLibrosComponent implements OnInit {
   Guardar(){
 
     if (this.EstadoI=="Disponible"){
-      this.estado= true
+      this.estado= true;
     }else
     {
       this.estado= false;
     }
+    // @ts-ignore
+    let clasificacion = document.getElementById("clasificacion").value;
+    console.log(clasificacion, "clasificacion")
     let libro={
       "titulo" : this.tituloI,
       "autores" : this.autorI,
       "editorial" : this.editorialI,
       "fecha_publicacion" :this.fechaPI,
       "idioma" : this.idiomaI,
-      "clasificacion" : this.clasificacionI,
+      "clasificacion" : clasificacion.toString(),
       "resumen" : this.resumenI,
       "link" : this.urlI,
       "estado" : this.estado
