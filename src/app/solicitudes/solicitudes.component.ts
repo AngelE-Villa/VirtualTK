@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {SolicitudesService} from "../ConexionServicios/SolicitudesService";
 import {UsuarioModelo} from "../Modelos/usuarioModelo";
 import {LibrosModelo} from "../Modelos/LibrosModelo";
+import {solicitudModelo} from "../Modelos/SolicitudModelo";
 
 
 @Component({
@@ -13,31 +14,30 @@ export class SolicitudesComponent implements OnInit {
 
 
   post : any;
-  titulosColumnas = ['comentario',
-  'estado',
-  'genero',
-  'usuario',
-  'libro'];
+  titulosColumnas = ['Comentario',
+  'Estado',
+  'Genero',
+  'Usuario',
+  'Libro'];
  filas:Array<any>=[];
   servicio:SolicitudesService;
   SolicitudesLista:Array<any>=[];
 
 
   constructor(servicio:SolicitudesService) {
+
     this.servicio=servicio;
     servicio.getSolicitudes().subscribe((x: any) => {
       this.SolicitudesLista = x
-
+      console.log(x)
     });
 
-    for(let i=0;i<this.SolicitudesLista.length; i++){
-      this.filas=this.SolicitudesLista[i];
-    }
-    console.log(this.SolicitudesLista)
+/*
     const soli={
       ...this.SolicitudesLista,
       usuario: this.SolicitudesLista
     }
+    console.log(soli, "soli")*/
   }
 
   ngOnInit() {
@@ -46,3 +46,5 @@ export class SolicitudesComponent implements OnInit {
 
 
 }
+
+

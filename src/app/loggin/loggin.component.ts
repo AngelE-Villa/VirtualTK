@@ -3,7 +3,7 @@ import {Message, MessageService} from "primeng/api";
 import {Messages} from "primeng/messages";
 import {empty} from "rxjs";
 import {UserService} from "../ConexionServicios/UserService";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {UsuarioModelo} from "../Modelos/usuarioModelo";
 import {HttpClient} from "@angular/common/http";
 import Swal from 'sweetalert2';
@@ -27,7 +27,7 @@ export class LogginComponent implements OnInit {
    servicio:UserService;
 
 
-  constructor( servicio:UserService ) {
+  constructor( servicio:UserService,  private router:Router ) {
     this.servicio = servicio;
     servicio.getUsuarios().subscribe((x: any) =>{
       console.log(x)
@@ -51,6 +51,7 @@ export class LogginComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       })
+      this.router.navigateByUrl('/Ingreso')
     }else
     {
       console.log( "no coinciden")
@@ -62,7 +63,6 @@ export class LogginComponent implements OnInit {
         showConfirmButton: true,
 
       })
-
       this.limpiar()
     }
     }

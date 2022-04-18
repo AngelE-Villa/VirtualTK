@@ -50,13 +50,14 @@ export class RegistroLibrosComponent implements OnInit {
     // @ts-ignore
     let clasificacion = document.getElementById("clasificacion").value;
     console.log(clasificacion, "clasificacion")
+    console.log(this.clasificacionI)
     let libro={
       "titulo" : this.tituloI,
       "autores" : this.autorI,
       "editorial" : this.editorialI,
       "fecha_publicacion" :this.fechaPI,
       "idioma" : this.idiomaI,
-      "clasificacion" : clasificacion.toString(),
+      "clasificacion" : this.clasificacionI,
       "resumen" : this.resumenI,
       "link" : this.urlI,
       "estado" : this.estado

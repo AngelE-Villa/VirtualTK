@@ -1,0 +1,20 @@
+.table{
+  border:4px;
+  width: 70%;
+  margin:auto;
+  height: 100%;
+  padding:30px;
+  margin-top: 90px;
+}
+.titulares{
+  background-color: lightgray;
+}
+
+.resultado{
+  background-color:bisque;
+}
+
+td, th{
+  border: 3px solid #999;
+  padding: 0.5rem;
+}

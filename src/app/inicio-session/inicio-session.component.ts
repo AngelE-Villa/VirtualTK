@@ -81,5 +81,8 @@ export class InicioSessionComponent implements OnInit {
       text:' Revise sus credenciales y vuelva a intentarlo',
       showConfirmButton: true,
 
-    })  }
+    })
+  this.usuarioL="";
+    this.contraL="";
+  }
 }

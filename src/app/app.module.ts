@@ -21,7 +21,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {registerLocaleData} from "@angular/common";
 import {RegistroLibrosComponent} from "./registro-libros/registro-libros.component";
 import { LibrosComponent } from './libros/libros.component';
-import { SolicitudesComponent } from './solicitudes/solicitudes.component';
+import {SolicitudesComponent} from './solicitudes/solicitudes.component';
 
 
 
@@ -38,7 +38,7 @@ import { SolicitudesComponent } from './solicitudes/solicitudes.component';
     PieComponent,
     RegistroLibrosComponent,
     LibrosComponent,
-    SolicitudesComponent
+    SolicitudesComponent,
   ],
   imports: [
     BrowserModule,

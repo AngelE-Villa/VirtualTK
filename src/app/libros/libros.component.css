@@ -1,4 +1,3 @@
-
 .table{
   border:4px;
   width: 70%;
@@ -13,6 +12,11 @@
 
 .resultado{
   background-color:bisque;
+}
+
+td, th{
+  border: 3px solid #999;
+  padding: 0.5rem;
 }
 
 
