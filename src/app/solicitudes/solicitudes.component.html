@@ -1,0 +1,22 @@
+<app-encabezado></app-encabezado>
+
+<table style="width: 75% ; margin: auto" class="  table table-striped table-bordered">
+  <thead>
+  <tr>
+    <th scope="col" *ngFor="let titulo of titulosColumnas">
+      {{titulo}}
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let fila of SolicitudesLista">
+    <td>{{fila.comentario}}</td>
+    <td>{{fila.estado}}</td>
+    <td>{{fila.genero}}</td>
+    <td>{{fila.usuario}}</td>
+    <td>{{fila.libro}}</td>
+  </tr>
+  </tbody>
+</table>
+
+<app-pie></app-pie>

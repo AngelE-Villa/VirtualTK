@@ -21,6 +21,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {registerLocaleData} from "@angular/common";
 import {RegistroLibrosComponent} from "./registro-libros/registro-libros.component";
 import { LibrosComponent } from './libros/libros.component';
+import { SolicitudesComponent } from './solicitudes/solicitudes.component';
 
 
 
@@ -36,7 +37,8 @@ import { LibrosComponent } from './libros/libros.component';
     EncabezadoComponent,
     PieComponent,
     RegistroLibrosComponent,
-    LibrosComponent
+    LibrosComponent,
+    SolicitudesComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +53,6 @@ import { LibrosComponent } from './libros/libros.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-
 
   ],
   providers: [],

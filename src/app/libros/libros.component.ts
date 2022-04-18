@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {LibrosService} from "../ConexionServicios/LibrosService";
 import {LibrosModelo} from "../Modelos/LibrosModelo";
+import {UbicacionModelo} from "../Modelos/UbicacionModelo";
 
 @Component({
   selector: 'app-libros',
@@ -17,6 +18,9 @@ export class LibrosComponent implements OnInit {
   }
   @Input()
   libro:LibrosModelo= new LibrosModelo();
+
+  @Input()
+  ubicacion:UbicacionModelo= new UbicacionModelo();
 
   ngOnInit(): void {
   }

@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 // @ts-ignore
 import {UsuarioModelo, usuarioModelo} from "src/app/Modelos/usuarioModelo"
 import {UbicacionModelo} from "../Modelos/UbicacionModelo";
+import {LibrosModelo} from "../Modelos/LibrosModelo";
 
 
 @Injectable({
@@ -19,8 +20,8 @@ export class UbicacionService {
 
 
   //trae todos usuarios
-  getUsuarios():Observable<UbicacionModelo>{
-    return this.http.get<UbicacionModelo>(this.base_url);
+  getUbicacion():Observable<UbicacionModelo>{
+    return this.http.get<usuarioModelo>(this.base_url);
   }
 
   url:String="";
