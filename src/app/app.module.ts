@@ -23,6 +23,12 @@ import {RegistroLibrosComponent} from "./registro-libros/registro-libros.compone
 import { LibrosComponent } from './libros/libros.component';
 import {SolicitudesComponent} from './solicitudes/solicitudes.component';
 import {DialogModule} from "primeng/dialog";
+import {InputTextModule} from 'primeng/inputtext';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+
+import {PrimeIcons, PrimeNGConfig, PrimeTemplate} from "primeng/api";
+import {CardModule} from "primeng/card";
+
 
 
 
@@ -39,7 +45,7 @@ import {DialogModule} from "primeng/dialog";
     PieComponent,
     RegistroLibrosComponent,
     LibrosComponent,
-    SolicitudesComponent,
+    SolicitudesComponent
   ],
   imports: [
     BrowserModule,
@@ -55,9 +61,11 @@ import {DialogModule} from "primeng/dialog";
     FormsModule,
     HttpClientModule,
     DialogModule,
+    BrowserAnimationsModule,
+    CardModule,
 
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

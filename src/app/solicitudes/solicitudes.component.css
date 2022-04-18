@@ -6,6 +6,16 @@
   padding:30px;
   margin-top: 90px;
 }
+
+.carta{
+  border:4px;
+  width: 70%;
+  margin:auto;
+  height: 100%;
+  padding:30px;
+  margin-top: 90px;
+  text-align-all: center;
+}
 .titulares{
   background-color: lightgray;
 }
@@ -19,6 +29,10 @@ td, th{
   padding: 0.5rem;
 }
 
+.boton{
+  margin-left: 10px;
+
+}
 .botons{
   display:block;
   margin-left: auto;

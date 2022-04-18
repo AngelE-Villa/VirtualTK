@@ -1,33 +1,61 @@
 <app-encabezado></app-encabezado>
+<div>
 
-<table  class=" table">
-  <thead class="titulares">
-  <tr>
-    <th scope="col" *ngFor="let titulo of titulosColumnas">
+  <p-dialog header="Editar" [(visible)]="visibilidad" [breakpoints]="{'960px': '75vw'}" [style]="{width: '50vw'}"
+            [draggable]="false" [resizable]="false">
+
+    <ng-template pTemplate="footer">
+      <p-button (click)="visibilidad=false" label="Cancelar" styleClass="p-button-text"></p-button>
+      <p-button (click)="visibilidad=false" label="Guardar" styleClass="p-button-text"></p-button>
+    </ng-template>
+  </p-dialog>
+
+
+  <p-dialog header="Eliminar" [(visible)]="visibilidadE" [breakpoints]="{'960px': '75vw'}" [style]="{width: '50vw'}"
+            [draggable]="false" [resizable]="false">
+    <h3>¿Esta seguro que desea eliminar esta solicitud?</h3>
+    <ng-template pTemplate="footer">
+      <p-button (click)="visibilidadE=false" label="No" styleClass="p-button-text"></p-button>
+      <p-button (click)="editarCorrecto()" label="Si" styleClass="p-button-text"></p-button>
+    </ng-template>
+  </p-dialog>
+
+
+
+<table  class=" table" >
+
+  <thead>
+
+  </thead>
+
+  <tbody>
+  <tr class="titulares">
+    <th scope="col" *ngFor="let titulo of titulosColumnas" pSortableColumn="code">
       {{titulo}}
+
     </th>
   </tr>
-  </thead>
-  <tbody class="resultado">
-  <tr *ngFor="let fila of SolicitudesLista">
-    <td>{{fila.comentario}}</td>
-    <td>{{fila.estado}}</td>
-    <td>{{fila.genero}}</td>
-    <td>{{fila.user.nombres}}</td>
-    <td>{{fila.libro.titulo}}</td>
-    <td><button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded"></button></td>
-    <td ><button   pButton pRipple type="button" icon="pi pi-times" class="  p-button-rounded p-button-danger " ></button></td>
-  </tr>
+
+    <tr *ngFor="let fila of SolicitudesLista" >
+      <td>{{fila.comentario}}</td>
+      <td>{{fila.estado}}</td>
+      <td>{{fila.genero}}</td>
+      <td>{{fila.user.nombres}}</td>
+      <td>{{fila.libro.titulo}}</td>
+      <td><button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded" (click)="editar()"></button></td>
+      <td ><button   pButton pRipple type="button" icon="pi pi-times" class="  p-button-rounded p-button-danger " (click)="eliminar()" ></button></td>
+    </tr>
   </tbody>
+
+  <tfoot>
+    <div class="flex align-items-center justify-content-between">
+      Lorem ipsum dolor sit amet
+    </div>
+  </tfoot>
+
 </table>
 
-<p-dialog header="Header" [(visible)]="visibilidad" [breakpoints]="{'960px': '75vw'}" [style]="{width: '50vw'}"
-          [draggable]="false" [resizable]="false">
 
-  <ng-template pTemplate="footer">
-    <p-button (click)="visibilidad=false" label="Cancelar" styleClass="p-button-text"></p-button>
-    <p-button (click)="visibilidad=false" label="Aceptar" styleClass="p-button-text"></p-button>
-  </ng-template>
-</p-dialog>
+</div>
 
 <app-pie></app-pie>

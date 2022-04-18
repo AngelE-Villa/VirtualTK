@@ -2,8 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {SolicitudesService} from "../ConexionServicios/SolicitudesService";
 import {UsuarioModelo} from "../Modelos/usuarioModelo";
 import {LibrosModelo} from "../Modelos/LibrosModelo";
-import {solicitudModelo} from "../Modelos/SolicitudModelo";
 
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-solicitudes',
@@ -21,7 +21,10 @@ export class SolicitudesComponent implements OnInit {
   'Libro',
   'Editar',
   'Eliminar'];
+
  filas:Array<any>=[];
+
+ tablaS:any;
   servicio:SolicitudesService;
   SolicitudesLista:Array<any>=[];
   comentarioU:any;
@@ -29,41 +32,54 @@ export class SolicitudesComponent implements OnInit {
   generoU:any;
   usuarioU: UsuarioModelo= new UsuarioModelo();
   libroU:LibrosModelo= new LibrosModelo();
-  visibilidad:Boolean;
+  visibilidad:Boolean=false;
+  visibilidadE:Boolean=false;
+  filaNum:any;
+  display: boolean = false;
+
+  showDialog() {
+    this.display = true;
+  }
 
   constructor(servicio:SolicitudesService) {
 
-    this.visibilidad=false;
     this.servicio=servicio;
     servicio.getSolicitudes().subscribe((x: any) => {
       this.SolicitudesLista = x
+      this.filaNum=x.next();
       console.log(x)
     });
 
-/*
-    const soli={
-      ...this.SolicitudesLista,
-      usuario: this.SolicitudesLista
-    }
-    console.log(soli, "soli")*/
+
   }
 
   ngOnInit() {
 
   }
-  /*
-  valores(){
-    twoTbody.addEventListener("click", )
-  event.target.tagName=="TD"
-  }*/
+
 
   editar(){
+    this.visibilidad=true;
 
   }
 
   eliminar(){
-
+  this.visibilidadE=true;
   }
+
+
+
+  editarCorrecto(){
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: ' Registro Eliminado  ',
+      showConfirmButton: false,
+      timer: 1500
+    })
+    this.visibilidadE=false
+  }
+
 
 }
 
