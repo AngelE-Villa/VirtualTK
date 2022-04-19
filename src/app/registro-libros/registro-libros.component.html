@@ -97,7 +97,13 @@
     <option>No Disponible</option>
   </select>
   <textarea class="arearesumen" name="resumen" id="resumen" cols="40" rows="5" placeholder="Resúmen" required [(ngModel)]="resumenI"></textarea>
-  <input class="botons" type="submit" value="Registrar" (click)="Guardar()">
+  <div *ngIf="guarda">
+    <input class="botons" type="submit" value="Registrar" (click)="Guardar()">
+  </div>
+  <div *ngIf="nuevo">
+    <input class="botons" type="submit" value="Ingresar Nuevo" (click)="Reload()">
+  </div>
+
 
 </form>
 </div>

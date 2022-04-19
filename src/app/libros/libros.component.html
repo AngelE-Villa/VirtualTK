@@ -1,3 +1,4 @@
+<div *ngIf="tabla">
 <table class="table">
   <tbody>
   <tr>
@@ -48,5 +49,28 @@
   </tbody>
 
 </table>
+<td><button class=" m-2" (click)="mostrar(libro.titulo)"> Localizaciones</button></td>
+<br>
+<div *ngIf="mostrarUbicaciones"  >
+  <table class="table" >
+    <tr *ngFor="let ubicacion of ubicacionListaTitulo">
+      <td class="titulares">Localizacion</td>
+      <td class="resultado">{{ubicacion.localizacion}}</td>
+      <td><button class=" m-1" (click)="reservar(ubicacion.libro.titulo,ubicacion.localizacion)"> Reservar</button></td>
+    </tr>
+  </table>
+</div>
+</div>
 
-<button class=" m-5"> Botón</button>
+<div *ngIf="reserva" >
+  <div *ngFor="let rs of reservacion">
+  <span>Reservación de libro</span>
+  <div>{{rs.libro.titulo}}</div>
+  <div>{{rs.libro.autores}}</div>
+  <div>{{rs.libro.titulo}}</div>
+  <div>{{rs.libro.localizacion}}</div>
+  <div>{{rs.libro.titulo}}</div>
+  </div>
+</div>
+
+

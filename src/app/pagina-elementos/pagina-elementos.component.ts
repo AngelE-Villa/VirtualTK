@@ -11,22 +11,19 @@ export class PaginaElementosComponent implements OnInit {
 
   servicio:LibrosService;
   librosLista: Array<any>=[];
-  ubicacionLista:Array<any>=[];
+  librosListaA: Array<any>=[];
+  librosListaB: Array<any>=[];
   libro:any;
-  servicio2:UbicacionService;
 
-  constructor( servicio:LibrosService, servicio2:UbicacionService) {
+
+  constructor( servicio:LibrosService) {
     this.servicio = servicio;
-    this.servicio2=servicio2;
+
 
     servicio.getLibros().subscribe((x: any) => {
       this.librosLista = x
-
     });
 
-    this.servicio2.getUbicacion().subscribe((x:any)=>{
-      this.ubicacionLista=x
-    });
   }
 
   ngOnInit(): void {
