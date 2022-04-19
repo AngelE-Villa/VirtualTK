@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {LibrosModelo} from "../Modelos/LibrosModelo";
 import {UbicacionModelo} from "../Modelos/UbicacionModelo";
 import {UbicacionService} from "../ConexionServicios/UbicacionService";
-import { Router} from "@angular/router";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-libros',
@@ -16,12 +16,14 @@ export class LibrosComponent implements OnInit {
   servicio2:UbicacionService;
   ubicacionLista:Array<any>=[];
   ubicacionListaTitulo:Array<any>=[];
-  reservacion: Array<any>=[];
 
   reserva:boolean=false;
   tabla:boolean=true;
-  constructor(servicio2:UbicacionService, private router:Router) {
+
+  router:Router;
+  constructor(servicio2:UbicacionService, router:Router) {
     this.servicio2=servicio2;
+    this.router=router;
 
     this.servicio2.getUbicacion().subscribe((x:any)=>{
       this.ubicacionLista=x
@@ -35,18 +37,8 @@ export class LibrosComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  reservar( titulo:String, localizacion:String){
-    this.reserva=true;
-    this.tabla=false;
-    for (let rs of this.ubicacionListaTitulo){
-      if (rs.libro.titulo==titulo && rs.localizacion==localizacion){
-        this.reservacion.push(rs);
-      }else{
-        console.log("No entra")
-      }
-    }
-
+  reservar( titulo:String, localizacion:String) {
+    this.router.navigateByUrl(("Reservacion/" + localizacion + "/" + titulo));
   }
   mostrar(titulo:String) {
     this.mostrarUbicaciones = !this.mostrarUbicaciones;

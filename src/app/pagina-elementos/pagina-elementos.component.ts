@@ -11,12 +11,10 @@ export class PaginaElementosComponent implements OnInit {
 
   servicio:LibrosService;
   librosLista: Array<any>=[];
-  librosListaA: Array<any>=[];
-  librosListaB: Array<any>=[];
   libro:any;
-
-
-  constructor( servicio:LibrosService) {
+  librosUbi: Array<any>=[]
+  
+  constructor(servicio:LibrosService) {
     this.servicio = servicio;
 
 
