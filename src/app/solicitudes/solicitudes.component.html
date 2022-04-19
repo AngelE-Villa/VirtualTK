@@ -43,7 +43,7 @@
       <td>{{fila.user.nombres}}</td>
       <td>{{fila.libro.titulo}}</td>
       <td><button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded" (click)="editar()"></button></td>
-      <td ><button   pButton pRipple type="button" icon="pi pi-times" class="  p-button-rounded p-button-danger " (click)="eliminar()" ></button></td>
+      <td ><button   pButton pRipple type="button" icon="pi pi-times" class="  p-button-rounded p-button-danger " (click)="eliminar(fila.user.nombres,fila.libro.titulo)" ></button></td>
     </tr>
   </tbody>
 

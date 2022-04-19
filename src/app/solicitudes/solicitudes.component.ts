@@ -46,7 +46,6 @@ export class SolicitudesComponent implements OnInit {
     this.servicio=servicio;
     servicio.getSolicitudes().subscribe((x: any) => {
       this.SolicitudesLista = x
-      this.filaNum=x.next();
       console.log(x)
     });
 
@@ -63,7 +62,16 @@ export class SolicitudesComponent implements OnInit {
 
   }
 
-  eliminar(){
+  eliminar(user:String,titulo:String){
+    let id:String="";
+    for (let soli of this.SolicitudesLista){
+      if (soli.user.nombres==user && soli.libro.titulo==titulo){
+        id=soli._id;
+      }
+
+    }
+
+    console.log(id+" Variable ")
   this.visibilidadE=true;
   }
 
