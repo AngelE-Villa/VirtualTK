@@ -26,10 +26,9 @@ export class SolicitudesService {
 
 
 
-  create(ubicacion: UbicacionModelo):Boolean{
-    console.log(ubicacion)
+  create(soli: SolicitudModelo):Boolean{
 
-    this.http.post(this.base_url+"location/", ubicacion).subscribe((reg)=> {
+    this.http.post(this.base_url+"application/", soli).subscribe((reg)=> {
       console.log(reg)
       return true;
     })

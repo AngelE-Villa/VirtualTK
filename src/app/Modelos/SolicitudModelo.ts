@@ -5,7 +5,7 @@ export class solicitudModelo{
     comentario:any;
     estado:any;
     genero:any;
-    usuario: UsuarioModelo= new UsuarioModelo();
+    user: UsuarioModelo= new UsuarioModelo();
     libro:LibrosModelo= new LibrosModelo();
 
 }

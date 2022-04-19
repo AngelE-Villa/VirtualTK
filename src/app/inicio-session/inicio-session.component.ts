@@ -47,9 +47,7 @@ export class InicioSessionComponent implements OnInit {
 
       if((abc.usuario.toString())==(this.usuarioL) && (abc.password.toString())==(this.contraL.toString())){
           this.bool=true;
-          localStorage.setItem("usu", JSON.stringify(this.usuarioL))
-        localStorage.setItem("nombres", JSON.stringify(abc.nombres))
-        localStorage.setItem("apellidos", JSON.stringify(abc.apellidos))
+          localStorage.setItem("usu", this.usuarioL)
       }
     }
     if(this.bool==true){
