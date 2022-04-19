@@ -13,7 +13,7 @@ export class PaginaElementosComponent implements OnInit {
   librosLista: Array<any>=[];
   libro:any;
   librosUbi: Array<any>=[]
-  
+
   constructor(servicio:LibrosService) {
     this.servicio = servicio;
 
@@ -26,14 +26,6 @@ export class PaginaElementosComponent implements OnInit {
 
   ngOnInit(): void {
 
-  }
-  comparar(){
-    for(let i=0; i<this.librosLista.length; i++){
-      let recorre=this.librosLista[i];
-
-
-    }
-    this.librosLista
   }
 
 }

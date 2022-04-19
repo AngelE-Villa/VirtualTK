@@ -10,10 +10,10 @@
           <a class="nav-link active" aria-current="page" href="/Listado">Listado</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="/Solicitud">Solicitudes</a>
+          <a class="nav-link " href="/Solicitud" *ngIf="desabilitar">Solicitudes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="/RegistroLibros">Ingresar Libros</a>
+          <a class="nav-link " href="/RegistroLibros" *ngIf="desabilitar" >Ingresar Libros</a>
         </li>
 
 

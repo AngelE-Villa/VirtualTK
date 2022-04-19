@@ -3,6 +3,7 @@ import {LibrosModelo} from "../Modelos/LibrosModelo";
 import {UbicacionModelo} from "../Modelos/UbicacionModelo";
 import {UbicacionService} from "../ConexionServicios/UbicacionService";
 import {Router} from "@angular/router";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-libros',
@@ -38,7 +39,25 @@ export class LibrosComponent implements OnInit {
   ngOnInit(): void {
   }
   reservar( titulo:String, localizacion:String) {
-    this.router.navigateByUrl(("Reservacion/" + localizacion + "/" + titulo));
+    let name = localStorage.getItem('usu');
+    console.log(name +"storage")
+    if (name==null){
+      this.error()
+    }else {
+      this.router.navigateByUrl(("Reservacion/" + localizacion + "/" + titulo));
+    }
+
+  }
+
+  error(){
+    Swal.fire({
+      position: 'top-end',
+      icon: 'error',
+      title: 'Error! ',
+      text:' Necesita iniciar sesisón para reservar un articulo',
+      showConfirmButton: true,
+
+    })
   }
   mostrar(titulo:String) {
     this.mostrarUbicaciones = !this.mostrarUbicaciones;

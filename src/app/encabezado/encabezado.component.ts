@@ -18,7 +18,7 @@ export class EncabezadoComponent implements OnInit {
   this.opc=true;
   }
 
-
+  desabilitar:boolean=false;
   listaUser: Array<any>=[];
   listaUserFil:Array<any>=[];
 
@@ -37,6 +37,10 @@ export class EncabezadoComponent implements OnInit {
           }
         }
       })
+
+      if (name=="admin"){
+        this.desabilitar=true;
+      }
   }
 
   Cerrar(){

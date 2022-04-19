@@ -7,6 +7,7 @@ import {UsuarioModelo} from "../Modelos/usuarioModelo";
 import {SolicitudesService} from "../ConexionServicios/SolicitudesService";
 import {LibrosModelo} from "../Modelos/LibrosModelo";
 import {getLocaleDateFormat} from "@angular/common";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-reservacion',
@@ -137,15 +138,40 @@ export class ReservacionComponent implements OnInit {
 
     console.log(soli)
     if(this.solicitud.create(soli)){
-      console.log("creado");
+      this.correcto()
 
     }else{
-      console.log("error")
+      this.correcto()
     }
   }
 
   Cancelar(){
     this.router.navigateByUrl("/Listado")
+  }
+
+  error(){
+    Swal.fire({
+      position: 'top-end',
+      icon: 'error',
+      title: 'Error! ',
+      text:' Disculpe los inconvenientes' +
+        'Trabajamos para mejorar el servicio',
+      showConfirmButton: true,
+
+    })
+  }
+
+  correcto(){
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: ' Reservacion realizada correctamente',
+      text: 'Recuerde que para retirar su reservación debe llevar la cédula ',
+      showConfirmButton: false,
+      timer: 1500
+    })
+    this.router.navigateByUrl('/Listado')
+
   }
 
 }
