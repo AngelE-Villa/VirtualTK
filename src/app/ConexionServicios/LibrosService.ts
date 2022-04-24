@@ -26,20 +26,18 @@ export class LibrosService {
 
     this.http.post(this.base_url+"book/", libro).subscribe((reg)=> {
       console.log(reg)
-      return true;
-    })
 
-   return false;
+    });
+
+    return true;
     //return this.http.post(this.base_url+"user/", usuario).then(res => res.data);
   }
 
   update(libros: LibrosModelo, id:String):Boolean{
-    if(this.http.put(this.base_url+"books/"+id, libros)){
-      return true;
-    }else
-    {
-      return false;
-    }
+  this.http.put(this.base_url+"book/"+id, libros).subscribe((reg)=> {
+    console.log(reg);
+    });
+    return true;
   }
 
   delete(id:String){

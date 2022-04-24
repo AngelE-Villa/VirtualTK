@@ -38,17 +38,17 @@ export class SolicitudesService {
 
 
   update(solicitud: SolicitudModelo, id:String):Boolean{
-    if(this.http.put(this.base_url+"application/"+id, solicitud)){
-      return true;
-    }else
-    {
-      return false;
-    }
+    this.http.put(this.base_url+"application/"+id, solicitud).subscribe((reg)=> {
+      console.log(reg);
+    });
+    return true;
   }
 
 
 
   delete(id:String){
-    return this.http.delete(this.base_url+"application/"+id);
+    this.http.delete(this.base_url+"application/"+id).subscribe((reg)=> {
+      console.log(reg)
+    });
   }
 }

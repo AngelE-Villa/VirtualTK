@@ -38,13 +38,12 @@ export class UbicacionService {
   }
 
 
-  update(usuario: usuarioModelo, id:String):Boolean{
-    if(this.http.put(this.base_url+"user/"+id, usuario)){
+  update(ubica: UbicacionModelo, id:String):Boolean{
+    this.http.put(this.base_url+"location/"+id, ubica).subscribe((reg)=> {
+      console.log(reg);
+    });
       return true;
-    }else
-    {
-      return false;
-    }
+
   }
 
   log(usuario: usuarioModelo, contraseña: String, usuario2:String ):Boolean{

@@ -7,5 +7,6 @@ export class solicitudModelo{
     genero:any;
     user: UsuarioModelo= new UsuarioModelo();
     libro:LibrosModelo= new LibrosModelo();
+    ubicacion:any;
 
 }

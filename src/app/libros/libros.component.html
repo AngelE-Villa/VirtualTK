@@ -49,8 +49,7 @@
   </tbody>
 
 </table>
-<td><button class=" m-2" (click)="mostrar(libro.titulo)"> Localizaciones</button></td>
-<br>
+  <td><button class="table" (click)="mostrar(libro.titulo)"> Localizaciones</button></td>
 <div *ngIf="mostrarUbicaciones"  >
   <table class="table" >
     <tr *ngFor="let ubicacion of ubicacionListaTitulo">
@@ -60,7 +59,7 @@
     </tr>
   </table>
 </div>
-</div>
+
 
 
 

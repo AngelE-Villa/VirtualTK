@@ -133,7 +133,8 @@ export class ReservacionComponent implements OnInit {
       "estado" :"",
       "genero":"",
       "user": usu,
-      "libro":libro
+      "libro":libro,
+      "ubicacion":this.local
     }
 
     console.log(soli)

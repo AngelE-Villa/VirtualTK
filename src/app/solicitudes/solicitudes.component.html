@@ -1,12 +1,12 @@
 <app-encabezado></app-encabezado>
 <div>
 
-  <p-dialog header="Editar" [(visible)]="visibilidad" [breakpoints]="{'960px': '75vw'}" [style]="{width: '50vw'}"
+  <p-dialog header="Aceptar" [(visible)]="visibilidad" [breakpoints]="{'960px': '75vw'}" [style]="{width: '50vw'}"
             [draggable]="false" [resizable]="false">
-
+    <h3>¿Esta seguro de aceptar la solicitud?</h3>
     <ng-template pTemplate="footer">
       <p-button (click)="visibilidad=false" label="Cancelar" styleClass="p-button-text"></p-button>
-      <p-button (click)="visibilidad=false" label="Guardar" styleClass="p-button-text"></p-button>
+      <p-button (click)="Aceptar()" label="Aceptar" styleClass="p-button-text"></p-button>
     </ng-template>
   </p-dialog>
 
@@ -16,7 +16,17 @@
     <h3>¿Esta seguro que desea eliminar esta solicitud?</h3>
     <ng-template pTemplate="footer">
       <p-button (click)="visibilidadE=false" label="No" styleClass="p-button-text"></p-button>
-      <p-button (click)="editarCorrecto()" label="Si" styleClass="p-button-text"></p-button>
+      <p-button (click)="finalizarElimnar()" label="Si" styleClass="p-button-text"></p-button>
+    </ng-template>
+  </p-dialog>
+
+
+  <p-dialog header="Recibir" [(visible)]="visibilidadR" [breakpoints]="{'960px': '75vw'}" [style]="{width: '50vw'}"
+            [draggable]="false" [resizable]="false">
+    <h3>¿Esta seguro de continuar?</h3>
+    <ng-template pTemplate="footer">
+      <p-button (click)="visibilidadR=false" label="Cancelar" styleClass="p-button-text"></p-button>
+      <p-button (click)="Recibir()" label="Aceptar" styleClass="p-button-text"></p-button>
     </ng-template>
   </p-dialog>
 
@@ -25,7 +35,7 @@
 <table  class=" table" >
 
   <thead>
-
+    <h3>Solictudes</h3>
   </thead>
 
   <tbody>
@@ -36,24 +46,61 @@
     </th>
   </tr>
 
-    <tr *ngFor="let fila of SolicitudesLista" >
-      <td>{{fila.comentario}}</td>
+    <tr *ngFor="let fila of SolicitudesListaFil" >
+      <td>{{fila.libro.estado}}</td>
       <td>{{fila.estado}}</td>
-      <td>{{fila.genero}}</td>
+      <td>{{fila.ubicacion}}</td>
+      <td>{{fila.libro.clasificacion}}</td>
       <td>{{fila.user.nombres}}</td>
       <td>{{fila.libro.titulo}}</td>
-      <td><button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded" (click)="editar()"></button></td>
+      <td><button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded" (click)="selecionarDatos(fila.libro.titulo,fila.ubicacion,fila.user.nombres)"></button></td>
       <td ><button   pButton pRipple type="button" icon="pi pi-times" class="  p-button-rounded p-button-danger " (click)="eliminar(fila.user.nombres,fila.libro.titulo)" ></button></td>
     </tr>
   </tbody>
 
   <tfoot>
-    <div class="flex align-items-center justify-content-between">
-      Lorem ipsum dolor sit amet
-    </div>
+  <div >
+    <i>Tabla de solcitudes enviadas por los usuarios</i>
+  </div>
   </tfoot>
 
 </table>
+
+
+  <table  class=" table" >
+
+    <thead>
+    <h3>Prestamos</h3>
+    </thead>
+
+    <tbody>
+    <tr class="titulares">
+      <th scope="col" *ngFor="let titulo of titulosColumnas1" pSortableColumn="code">
+        {{titulo}}
+
+      </th>
+    </tr>
+
+    <tr *ngFor="let fila of SolicitudesListaFil2" >
+      <td>{{fila.libro.estado}}</td>
+      <td>{{fila.estado}}</td>
+      <td>{{fila.ubicacion}}</td>
+      <td>{{fila.libro.clasificacion}}</td>
+      <td>{{fila.user.nombres}}</td>
+      <td>{{fila.libro.titulo}}</td>
+      <td><button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded" (click)="selecionarDatosR(fila.libro.titulo,fila.ubicacion,fila.user.nombres)"></button></td>
+    </tr>
+    </tbody>
+
+    <tfoot>
+    <div class="flex align-items-center justify-content-between">
+      <i>Tabla de prestamos realizados a los usuarios</i>
+    </div>
+    </tfoot>
+
+  </table>
+
+
 
 
 </div>
