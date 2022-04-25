@@ -24,17 +24,8 @@ export class UserService {
 
   url:String="";
 //crear usuarios
-  create(usuario: usuarioModelo):Boolean{
-    console.log(usuario)
-    this.url= this.base_url+"user";
-
-
-     this.http.post(this.base_url+"user/", usuario).subscribe((reg)=> {
-      console.log(reg)
-       return true;
-    })
-
-    return false;
+  create(usuario: usuarioModelo){
+     return this.http.post(this.base_url+"user/", usuario);
   }
 
 

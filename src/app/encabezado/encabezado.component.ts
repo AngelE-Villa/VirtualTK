@@ -26,9 +26,13 @@ export class EncabezadoComponent implements OnInit {
   listaUserFil:Array<any>=[];
   HabilitarIngreso=false;
   HabilitarCerrar=false;
+  femenino:boolean=false;
+  masculino:boolean=false;
+
 
     ngOnInit(): void {
       let name = localStorage.getItem('usu');
+      let genero = localStorage.getItem('gen');
       this.user.getUsuarios().subscribe(x=> {
         this.listaUser=x;
         for (let u of this.listaUser){
@@ -39,6 +43,15 @@ export class EncabezadoComponent implements OnInit {
           }
         }
       })
+
+      if(genero=="Masculino"){
+        this.masculino=true;
+      }else if(genero=="Femenino"){
+        this.femenino=true;
+      }else{
+        this.masculino=false;
+        this.femenino=false;
+      }
 
       if (name=="admin"){
         this.desabilitar=true;
@@ -54,8 +67,9 @@ export class EncabezadoComponent implements OnInit {
   }
 
   Cerrar(){
-      localStorage.removeItem('usu')
-      this.router.navigate([''])
+      localStorage.removeItem('usu');
+      this.router.navigate(['']);
+      localStorage.removeItem('gen');
   }
 
 }

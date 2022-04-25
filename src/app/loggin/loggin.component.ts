@@ -90,12 +90,11 @@ export class LogginComponent implements OnInit {
       "usuario" : this.usuarioI.toString(),
       "password" : this.contraI.toString()
     }
-    if(this.servicio.create(usu)){
-      console.log("creado");
+    this.servicio.create(usu).subscribe((reg)=> {
+      console.log(reg)
+      this.router.navigateByUrl('/Ingreso')
+    })
 
-    }else{
-      console.log("error")
-    }
 
   }
 

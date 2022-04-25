@@ -47,7 +47,7 @@ td, th{
 }
 
 body{
-  background-image: url("../img/banner.png");
+  background-image: url("../../assets/img/banner.png");
   background-size: cover;
   height: 130vh;
   width: 100%;
