@@ -39,32 +39,46 @@ export class LogginComponent implements OnInit {
 
 
   }
+  camposvacios:boolean=false;
+
+  validarCampos(){
+    if (this.nombreI==null || this.apellidosI==null || this.usuarioI==null
+      || this.generoI==null || this.contraI==null || this.contra2I==null){
+      this.camposvacios=true;
+      return false;
+    }else {
+      return true;
+    }
+  }
 
   guardar(){
-    if(this.contraI==this.contra2I){
-    console.log(this.usuarioI, this.contraI)
-    this.enviar();
-      Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Registro Correcto BIENVENIDO',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      this.router.navigateByUrl('/Ingreso')
-    }else
-    {
-      console.log( "no coinciden")
-      Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        title: 'Error! ',
-        text:'No se pudo completar el registro Revise sus datos y vuelva a intentarlo',
-        showConfirmButton: true,
+    if (this.validarCampos()){
+      if(this.contraI==this.contra2I){
+        console.log(this.usuarioI, this.contraI)
+        this.enviar();
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Registro Correcto BIENVENIDO',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        this.router.navigateByUrl('/Ingreso')
+      }else
+      {
+        console.log( "no coinciden")
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Error! ',
+          text:'No se pudo completar el registro Revise sus datos y vuelva a intentarlo',
+          showConfirmButton: true,
 
-      })
-      this.limpiar()
+        })
+        this.limpiar()
+      }
     }
+
     }
 
   enviar(){

@@ -9,6 +9,9 @@
 <form method="POST" class="formulario">
   <h4>Ingreso de Libros</h4>
   <img src="https://www.matematicasonline.es/BachilleratoCCNN/Segundo/imagenes/libro.png" alt="">
+  <br>
+  <div style="color: red; font-size: small; text-align: center " *ngIf="camposvacios">********Campos vacios*********</div>
+  <br>
   <input class="controls" type="text" name="titulo" id="titulo" placeholder="Título" required [(ngModel)]="libro.titulo">
   <input class="controls" type="text" name="autor" id="autor" placeholder="Autor" required [(ngModel)]="libro.autores">
   <input class="controls" type="text" name="editorial" id="editorial" placeholder="Editorial" required [(ngModel)]="libro.editorial">

@@ -136,93 +136,101 @@ export class RegistroLibrosComponent implements OnInit {
   }
 
   estado:boolean= true;
+  camposvacios:boolean=false;
+
+  validarCampos():boolean{
+    if (this.libro.titulo==null || this.libro.autores==null || this.libro.editorial==null
+      || this.libro.fecha_publicacion==null || this.ubicacion.localizacion==null || this.libro.link==null
+      || this.libro.estado==null || this.libro.resumen==null){
+      this.camposvacios=true;
+      return false;
+    }else {
+      return true;
+    }
+  }
 
 
   Guardar():void {
-    console.log(this.libros)
-    console.log(this.idL)
-    console.log(this.idS)
-    console.log(this.idU);
-    this.libro.fecha_publicacion= this.pipe.transform(this.libro.fecha_publicacion, 'yyyy-MM-dd');
 
-    this.solicitud.libro=this.libro
+    if (this.validarCampos()){
+      this.libro.fecha_publicacion= this.pipe.transform(this.libro.fecha_publicacion, 'yyyy-MM-dd');
 
-    console.log(this.libro)
-    this.ubicacion.libro=this.libro;
-    console.log(this.ubicacion)
-    console.log(this.solicitud)
+      this.solicitud.libro=this.libro
+      this.ubicacion.libro=this.libro;
 
-    this.servicioLi.getLibros().subscribe((x:any)=>{
-      this.librosLista=x
-      console.log(x)
-      console.log("Nueva Lista")
-    })
-
-    if (this.libro.estado=="Disponible"){
-      this.libro.estado= true;
-    }else
-    {
-      this.libro.estado= false;
-    }
-
-    console.log(this.tituloExist())
-
-    if (this.editing){
-      this.servicioLi.update(this.libro,this.idL).subscribe(res=>{
-        console.log("creado")
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Registro actualizado correctamente!',
-          showConfirmButton: false,
-          timer: 1500})
+      this.servicioLi.getLibros().subscribe((x:any)=>{
+        this.librosLista=x
+        console.log(x)
+        console.log("Nueva Lista")
       })
 
-      if (this.idS!=null){
-        this.servicioSoli.update(this.solicitud,this.idS).subscribe(res=> {
-          this.router.navigate(['/Listado'])
-        })
+      if (this.libro.estado=="Disponible"){
+        this.libro.estado= true;
+      }else
+      {
+        this.libro.estado= false;
       }
+      console.log(this.tituloExist())
 
-    }else {
-      if (this.tituloExist()==false){
-        this.servicioLi.createLibros(this.libro).subscribe(res=>{
-          this.router.navigate(['/Listado'])
+      if (this.editing){
+        this.servicioLi.update(this.libro,this.idL).subscribe(res=>{
           console.log("creado")
           Swal.fire({
             position: 'top-end',
             icon: 'success',
-            title: 'Registro creado correctamente!',
+            title: 'Registro actualizado correctamente!',
             showConfirmButton: false,
             timer: 1500})
+        })
+
+        if (this.idS!=null){
+          this.servicioSoli.update(this.solicitud,this.idS).subscribe(res=> {
+            this.router.navigate(['/Listado'])
+          })
+        }
+
+      }else {
+        if (this.tituloExist()==false){
+          this.servicioLi.createLibros(this.libro).subscribe(res=>{
+            this.router.navigate(['/Listado'])
+            console.log("creado")
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Registro creado correctamente!',
+              showConfirmButton: false,
+              timer: 1500})
+          });
+
+        } else {
+          console.log("Ya existe")
+        }
+      }
+
+      if (this.editing){
+        this.servicioUb.update(this.ubicacion,this.idU).subscribe(res=>{
+          this.router.navigate(['/Listado']);
         });
 
-      } else {
-        console.log("Ya existe")
-      }
-    }
-
-    if (this.editing){
-      this.servicioUb.update(this.ubicacion,this.idU).subscribe(res=>{
-        this.router.navigate(['/Listado']);
-      });
-
-    }else{
-      if (this.tituloUbicacion()==false){
-        this.servicioUb.create(this.ubicacion).subscribe(res=> {
-            this.router.navigate(['/Listado'])
-            console.log("Ubicacion creada")
-          },error => {
-            console.log(error)
-          }
-        );
       }else{
-        console.log("Ya existe")
+        if (this.tituloUbicacion()==false){
+          this.servicioUb.create(this.ubicacion).subscribe(res=> {
+              this.router.navigate(['/Listado'])
+              console.log("Ubicacion creada")
+            },error => {
+              console.log(error)
+            }
+          );
+        }else{
+          console.log("Ya existe")
+        }
+
       }
+      this.nuevo=true;
+      this.guarda=false;
 
     }
-    this.nuevo=true;
-    this.guarda=false;
+
 
 
   }

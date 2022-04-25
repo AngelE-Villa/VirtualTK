@@ -4,6 +4,7 @@ import {MenuItem} from "primeng/api";
 import {newArray} from "@angular/compiler/src/util";
 import {MenuItemContent} from "primeng/menu";
 import {UserService} from "../ConexionServicios/UserService";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-encabezado',
@@ -13,8 +14,10 @@ import {UserService} from "../ConexionServicios/UserService";
 export class EncabezadoComponent implements OnInit {
   opc:boolean;
   user: UserService;
-  constructor(user: UserService) {
+  router:Router
+  constructor(user: UserService,router:Router) {
     this.user=user;
+    this.router=router;
   this.opc=true;
   }
 
@@ -52,7 +55,7 @@ export class EncabezadoComponent implements OnInit {
 
   Cerrar(){
       localStorage.removeItem('usu')
-      window.location.reload();
+      this.router.navigate([''])
   }
 
 }

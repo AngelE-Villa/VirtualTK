@@ -8,6 +8,7 @@ import {LibrosService} from "../ConexionServicios/LibrosService";
 import {UbicacionService} from "../ConexionServicios/UbicacionService";
 import {solicitudModelo} from "../Modelos/SolicitudModelo";
 import {UbicacionModelo} from "../Modelos/UbicacionModelo";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-solicitudes',
@@ -104,8 +105,11 @@ export class SolicitudesComponent implements OnInit {
   ubicacionService:UbicacionService;
   servicio:SolicitudesService;
 
-  constructor(servicio:SolicitudesService, libroService:LibrosService, ubicacionService:UbicacionService) {
+  router:Router
+
+  constructor(servicio:SolicitudesService, libroService:LibrosService, ubicacionService:UbicacionService,router:Router) {
     this.librosService=libroService;
+    this.router=router;
     this.ubicacionService=ubicacionService;
     this.servicio=servicio;
 
@@ -130,14 +134,12 @@ export class SolicitudesComponent implements OnInit {
     //Servicio libros
     libroService.getLibros().subscribe((x: any) => {
       this.librosLista = x
-      console.log(x)
     });
 
 
     //Servicio ubicaciones
     ubicacionService.getUbicacion().subscribe((x: any) => {
       this.ubicacionLista = x
-      console.log(x)
     });
 
   }
@@ -352,10 +354,12 @@ export class SolicitudesComponent implements OnInit {
       "ubicacion":this.ubicacionI
     }
 
-    this.servicio.update(soli,this.idSolicitud);
-    this.visibilidad=false;
-    this.ApectacionCorrecto();
-    setInterval(function(){window.location.reload(),1000})
+    this.servicio.update(soli,this.idSolicitud).subscribe(res=>{
+      this.visibilidad=false;
+      this.ApectacionCorrecto();
+      window.location.reload();
+    })
+
   }
 
   Recibir() {
@@ -429,11 +433,14 @@ export class SolicitudesComponent implements OnInit {
 
     console.log(this.idSolicitud)
 
-    this.servicio.update(soli,this.idSolicitud);
-    this.servicio.delete(this.idSolicitud)
-    this.visibilidadR=false;
-    this.RecibirCorrecto();
-    setInterval(function(){window.location.reload(),1000})
+    this.servicio.update(soli,this.idSolicitud).subscribe(res=>{
+      this.visibilidad=false;
+    })
+    this.servicio.delete(this.idSolicitud).subscribe(res=>{
+      this.visibilidadR=false;
+      this.RecibirCorrecto();
+      window.location.reload();
+    })
   }
 
 
