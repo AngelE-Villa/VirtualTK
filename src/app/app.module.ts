@@ -30,6 +30,7 @@ import {PrimeIcons, PrimeNGConfig, PrimeTemplate} from "primeng/api";
 import {CardModule} from "primeng/card";
 import { ReservacionComponent } from './reservacion/reservacion.component';
 import { FiltroListadoPipe } from './pipes/filtro-listado.pipe';
+import { EliminacionComponent } from './eliminacion/eliminacion.component';
 
 
 
@@ -49,7 +50,8 @@ import { FiltroListadoPipe } from './pipes/filtro-listado.pipe';
     LibrosComponent,
     SolicitudesComponent,
     ReservacionComponent,
-    FiltroListadoPipe
+    FiltroListadoPipe,
+    EliminacionComponent
   ],
   imports: [
     BrowserModule,

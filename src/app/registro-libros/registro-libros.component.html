@@ -9,12 +9,12 @@
 <form method="POST" class="formulario">
   <h4>Ingreso de Libros</h4>
   <img src="https://www.matematicasonline.es/BachilleratoCCNN/Segundo/imagenes/libro.png" alt="">
-  <input class="controls" type="text" name="titulo" id="titulo" placeholder="Título" required [(ngModel)]="tituloI">
-  <input class="controls" type="text" name="autor" id="autor" placeholder="Autor" required [(ngModel)]="autorI">
-  <input class="controls" type="text" name="editorial" id="editorial" placeholder="Editorial" required [(ngModel)]="editorialI">
-  <input class="controls" type="date" name="fecha" id="fecPubl" placeholder="Fecha de Publicacion" required [(ngModel)]="fechaPI">
-  <input class="controls" type="text" name="idioma" id="idioma" placeholder="Idioma" required [(ngModel)]="idiomaI">
-  <select class="controls" name="Clasificacion" id="clasificacion" required [(ngModel)]="clasificacionI">
+  <input class="controls" type="text" name="titulo" id="titulo" placeholder="Título" required [(ngModel)]="libro.titulo">
+  <input class="controls" type="text" name="autor" id="autor" placeholder="Autor" required [(ngModel)]="libro.autores">
+  <input class="controls" type="text" name="editorial" id="editorial" placeholder="Editorial" required [(ngModel)]="libro.editorial">
+  <input class="controls" type="date" name="fecha" id="fecPubl" placeholder="Fecha de Publicacion" required [(ngModel)]="libro.fecha_publicacion">
+  <input class="controls" type="text" name="idioma" id="idioma" placeholder="Idioma" required [(ngModel)]="libro.idioma">
+  <select class="controls" name="Clasificacion" id="clasificacion" required [(ngModel)]="libro.clasificacion">
     <option selected disabled hidden value value="">Clasificación</option>
     <option style="font-weight: bold">000 Generalidades</option>
     <option>010 Bibliografía</option>
@@ -88,14 +88,14 @@
     <option>990 Historia de otras regiones</option>
 
   </select>
-  <input class="controls" type="text" name="ubicacion" id="ubicacion" placeholder="Ubicación" required [(ngModel)]="ubicacionI">
-  <input class="controls" type="text" name="link" id="link" placeholder="URL" required [(ngModel)]="urlI">
-  <select class="controls" name="Disponibilidad" id="estado" required [(ngModel)]="EstadoI">
+  <input class="controls" type="text" name="ubicacion" id="ubicacion" placeholder="Ubicación" required [(ngModel)]="ubicacion.localizacion">
+  <input class="controls" type="text" name="link" id="link" placeholder="URL" required [(ngModel)]="libro.link">
+  <select class="controls" name="Disponibilidad" id="estado" required [(ngModel)]="libro.estado">
     <option selected disabled hidden value="">Disponibilidad</option>
     <option>Disponible</option>
     <option>No Disponible</option>
   </select>
-  <textarea class="arearesumen" name="resumen" id="resumen" cols="40" rows="3" placeholder="Resúmen" required [(ngModel)]="resumenI"></textarea>
+  <textarea class="arearesumen" name="resumen" id="resumen" cols="40" rows="3" placeholder="Resúmen" required [(ngModel)]="libro.resumen"></textarea>
   <div *ngIf="guarda">
     <input class="botons" type="submit" value="Registrar" (click)="Guardar()">
   </div>

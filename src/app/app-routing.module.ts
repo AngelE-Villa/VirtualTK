@@ -9,6 +9,7 @@ import {RegistroLibrosComponent} from "./registro-libros/registro-libros.compone
 import {SolicitudesComponent} from "./solicitudes/solicitudes.component";
 import {ReservacionComponent} from "./reservacion/reservacion.component";
 import {LibrosComponent} from "./libros/libros.component";
+import {EliminacionComponent} from "./eliminacion/eliminacion.component";
 
 const routes: Routes = [
   {path:"Ingreso",component: InicioSessionComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:"Registro", component: LogginComponent},
   {path:"RegistroLibros/:titulo", component: RegistroLibrosComponent},
   {path:"RegistroLibros", component: RegistroLibrosComponent},
+  {path:"Eliminacion/:titulo", component: EliminacionComponent},
   {path:"Reservacion/:localizacion/:titulo", component: ReservacionComponent}];
 
 @NgModule({

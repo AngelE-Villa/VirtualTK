@@ -26,29 +26,19 @@ export class SolicitudesService {
 
 
 
-  create(soli: SolicitudModelo):Boolean{
+  create(soli: SolicitudModelo){
 
-    this.http.post(this.base_url+"application/", soli).subscribe((reg)=> {
-      console.log(reg)
-      return true;
-    })
-
-    return false;
+    return this.http.post(this.base_url+"application/", soli);
   }
 
 
-  update(solicitud: SolicitudModelo, id:String):Boolean{
-    this.http.put(this.base_url+"application/"+id, solicitud).subscribe((reg)=> {
-      console.log(reg);
-    });
-    return true;
+  update(solicitud: SolicitudModelo, id:String){
+    return this.http.put(this.base_url+"application/"+id, solicitud);
   }
 
 
 
   delete(id:String){
-    this.http.delete(this.base_url+"application/"+id).subscribe((reg)=> {
-      console.log(reg)
-    });
+    return this.http.delete(this.base_url+"application/"+id);
   }
 }

@@ -52,7 +52,7 @@
 <div class="btn-ali">
   <input type="button" class="btn-inferiores" (click)="mostrar(libro.titulo)" *ngIf="localizacion" value="Localizaciones">
     <input type="button" class="btn-inferiores" routerLink="/RegistroLibros/{{libro.titulo}}" *ngIf="desabilitar" value="Editar">
-    <input type="button" class="btn-inferiores" value="Eliminar" *ngIf="desabilitar">
+    <input type="button" class="btn-inferiores" value="Eliminar" routerLink="/Eliminacion/{{libro.titulo}}" *ngIf="desabilitar">
 
   <br><br>
 </div>

@@ -138,12 +138,11 @@ export class ReservacionComponent implements OnInit {
     }
 
     console.log(soli)
-    if(this.solicitud.create(soli)){
+    this.solicitud.create(soli).subscribe(res=>{
+      this.correcto();
+    },error => {
       this.correcto()
-
-    }else{
-      this.correcto()
-    }
+    })
   }
 
   Cancelar(){

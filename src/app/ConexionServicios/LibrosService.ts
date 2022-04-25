@@ -21,27 +21,16 @@ export class LibrosService {
   }
 
 //crear usuarios
-  createLibros(libro: LibrosModelo):Boolean{
-    console.log(libro)
-
-    this.http.post(this.base_url+"book/", libro).subscribe((reg)=> {
-      console.log(reg)
-
-    });
-
-    return true;
-    //return this.http.post(this.base_url+"user/", usuario).then(res => res.data);
+  createLibros(libro: LibrosModelo){
+    return this.http.post(this.base_url+"book/", libro);
   }
 
-  update(libros: LibrosModelo, id:String):Boolean{
-  this.http.put(this.base_url+"book/"+id, libros).subscribe((reg)=> {
-    console.log(reg);
-    });
-    return true;
+  update(libros: LibrosModelo, id:String){
+   return this.http.put(this.base_url+"book/"+id, libros);
   }
 
   delete(id:String){
-    return this.http.delete(this.base_url+"books/"+id);
+    return this.http.delete(this.base_url+"book/"+id);
   }
 
 }

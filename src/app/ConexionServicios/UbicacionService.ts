@@ -26,24 +26,13 @@ export class UbicacionService {
 
   url:String="";
 //crear usuarios
-  create(ubicacion: UbicacionModelo):Boolean{
-    console.log(ubicacion)
-
-    this.http.post(this.base_url+"location/", ubicacion).subscribe((reg)=> {
-      console.log(reg)
-      return true;
-    })
-
-    return false;
+  create(ubicacion: UbicacionModelo){
+    return this.http.post(this.base_url+"location/", ubicacion);
   }
 
 
-  update(ubica: UbicacionModelo, id:String):Boolean{
-    this.http.put(this.base_url+"location/"+id, ubica).subscribe((reg)=> {
-      console.log(reg);
-    });
-      return true;
-
+  update(ubica: UbicacionModelo, id:String){
+    return this.http.put(this.base_url+"location/"+id, ubica);
   }
 
   log(usuario: usuarioModelo, contraseña: String, usuario2:String ):Boolean{
@@ -57,6 +46,6 @@ export class UbicacionService {
 
   delete(id:String){
 
-    return this.http.delete(this.base_url+"user/"+id);
+    return this.http.delete(this.base_url+"location/"+id);
   }
 }
