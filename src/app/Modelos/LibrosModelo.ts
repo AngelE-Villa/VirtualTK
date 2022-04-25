@@ -1,5 +1,6 @@
 
 export class LibrosModelo{
+  _id:any;
   titulo:any;
   autores:any;
   editorial:any;

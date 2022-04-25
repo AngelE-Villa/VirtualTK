@@ -114,7 +114,7 @@ export class SolicitudesComponent implements OnInit {
       this.SolicitudesLista = x
       console.log(x)
       for(let sol of this.SolicitudesLista){
-        if (sol.libro.estado==true && sol.estado==false){
+        if (sol.estado==false){
           console.log("Solicitudes")
           console.log(sol)
           this.SolicitudesListaFil.push(sol);
@@ -172,6 +172,7 @@ export class SolicitudesComponent implements OnInit {
   }
 
 
+  //DIALOGOS
   editarCorrecto(){
     Swal.fire({
       position: 'top-end',
@@ -204,6 +205,8 @@ export class SolicitudesComponent implements OnInit {
     })
     this.visibilidadE=false
   }
+
+  //----------//
 
   selecionarDatos(titulo:String,ubicacion:String,user:String){
     this.visibilidad=true;
@@ -293,22 +296,9 @@ export class SolicitudesComponent implements OnInit {
         this.clasificacionI=nl.clasificacion;
         this.resumenI=nl.resumen;
         this.urlI=nl.link;
-        this.EstadoI=false;
+        this.EstadoI=nl.estado;
       }
 
-    }
-
-    let libro1={
-      "_id":this.idI,
-      "titulo" : this.tituloI,
-      "autores" : this.autorI,
-      "editorial" : this.editorialI,
-      "fecha_publicacion" :this.fechaPI,
-      "idioma" : this.idiomaI,
-      "clasificacion" : this.clasificacionI,
-      "resumen" : this.resumenI,
-      "link" : this.urlI,
-      "estado" : this.EstadoI
     }
 
     let libro={
@@ -352,12 +342,6 @@ export class SolicitudesComponent implements OnInit {
       "password" : this.contraI
     }
 
-    let ubi={
-      "id":this.idUbiI,
-      "libro":libro,
-      "localizacion":this.ubicacionI
-    }
-
     let soli={
       "_id":this.idSoliU,
       "comentario":"",
@@ -369,11 +353,9 @@ export class SolicitudesComponent implements OnInit {
     }
 
     this.servicio.update(soli,this.idSolicitud);
-    this.librosService.update(libro1,this.idLibro);
-    this.ubicacionService.update(ubi,this.idUbica);
     this.visibilidad=false;
     this.ApectacionCorrecto();
-    //window.location.reload();
+    setInterval(function(){window.location.reload(),1000})
   }
 
   Recibir() {
@@ -381,7 +363,6 @@ export class SolicitudesComponent implements OnInit {
     for (let nl of this.librosLista) {
       console.log(this.idLibro + "  F-Editar L")
       if (nl._id == this.idLibro) {
-        this.idI = nl._id;
         this.tituloI = nl.titulo;
         this.autorI = nl.autores;
         this.editorialI = nl.editorial;
@@ -390,22 +371,9 @@ export class SolicitudesComponent implements OnInit {
         this.clasificacionI = nl.clasificacion;
         this.resumenI = nl.resumen;
         this.urlI = nl.link;
-        this.EstadoI = true;
+        this.EstadoI = nl.estado
       }
 
-    }
-
-    let libro1 = {
-      "_id": this.idI,
-      "titulo": this.tituloI,
-      "autores": this.autorI,
-      "editorial": this.editorialI,
-      "fecha_publicacion": this.fechaPI,
-      "idioma": this.idiomaI,
-      "clasificacion": this.clasificacionI,
-      "resumen": this.resumenI,
-      "link": this.urlI,
-      "estado": this.EstadoI
     }
 
     let libro = {
@@ -437,7 +405,6 @@ export class SolicitudesComponent implements OnInit {
 
     for (let lu of this.ubicacionLista) {
       if (lu.id == this.idUbica) {
-        this.idUbiI = lu.id
         this.ubicacionI = lu.localizacion;
       }
     }
@@ -448,12 +415,6 @@ export class SolicitudesComponent implements OnInit {
       "genero": this.generoI,
       "usuario": this.usuarioI,
       "password": this.contraI
-    }
-
-    let ubi = {
-      "id": this.idUbiI,
-      "libro": libro,
-      "localizacion": this.ubicacionI
     }
 
     let soli = {
@@ -469,12 +430,10 @@ export class SolicitudesComponent implements OnInit {
     console.log(this.idSolicitud)
 
     this.servicio.update(soli,this.idSolicitud);
-    this.librosService.update(libro1,this.idLibro);
-    this.ubicacionService.update(ubi,this.idUbica);
     this.servicio.delete(this.idSolicitud)
     this.visibilidadR=false;
     this.RecibirCorrecto();
-    //window.location.reload();
+    setInterval(function(){window.location.reload(),1000})
   }
 
 

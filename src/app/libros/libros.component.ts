@@ -4,6 +4,8 @@ import {UbicacionModelo} from "../Modelos/UbicacionModelo";
 import {UbicacionService} from "../ConexionServicios/UbicacionService";
 import {Router} from "@angular/router";
 import Swal from "sweetalert2";
+import {SolicitudesService} from "../ConexionServicios/SolicitudesService";
+import {LibrosService} from "../ConexionServicios/LibrosService";
 
 @Component({
   selector: 'app-libros',
@@ -13,22 +15,39 @@ import Swal from "sweetalert2";
 export class LibrosComponent implements OnInit {
 
 
+  servicioL:LibrosService;
+
   mostrarUbicaciones:Boolean=false;
   servicio2:UbicacionService;
   ubicacionLista:Array<any>=[];
-  ubicacionListaTitulo:Array<any>=[];
+  solicitudesLista:Array<any>=[];
 
-  reserva:boolean=false;
-  tabla:boolean=true;
+  ubicacionListaTitulo:Array<any>=[];
+  localizacion:boolean=true;
+  soliService:SolicitudesService;
+
+  tlibro:any;
+  local:any;
+
+  noUbicaciones:boolean=false;
+  VentanaEditar:boolean=false;
+  desabilitar:boolean=false;
 
   router:Router;
-  constructor(servicio2:UbicacionService, router:Router) {
+  constructor(servicio2:UbicacionService, router:Router, soliService:SolicitudesService,servicioL:LibrosService) {
     this.servicio2=servicio2;
+    this.servicioL=servicioL
+    this.soliService=soliService;
     this.router=router;
 
-    this.servicio2.getUbicacion().subscribe((x:any)=>{
-      this.ubicacionLista=x
+    this.soliService.getSolicitudes().subscribe((x:any)=>{
+      this.solicitudesLista=x
     });
+
+    this.servicio2.getUbicacion().subscribe((x:any)=>{
+        this.ubicacionLista=x
+    });
+
   }
   @Input()
   libro:LibrosModelo= new LibrosModelo();
@@ -37,6 +56,10 @@ export class LibrosComponent implements OnInit {
   ubicacion:UbicacionModelo= new UbicacionModelo();
 
   ngOnInit(): void {
+    let name = localStorage.getItem('usu');
+    if(name=='admin'){
+      this.desabilitar=true;
+    }
   }
   reservar( titulo:String, localizacion:String) {
     let name = localStorage.getItem('usu');
@@ -59,20 +82,47 @@ export class LibrosComponent implements OnInit {
 
     })
   }
+
+  SeleccionLibro(titulo:String){
+    this.VentanaEditar=true;
+    console.log("Selecion")
+  }
+
+  Editar(){
+
+  }
+
   mostrar(titulo:String) {
     this.mostrarUbicaciones = !this.mostrarUbicaciones;
-    for (let ub of this.ubicacionLista){
-      if (ub.libro.titulo==titulo){
-        this.ubicacionListaTitulo.push(ub);
-      }else{
-        console.log("No entra")
+    this.localizacion=false
+    for (let soli of this.solicitudesLista){
+      if (soli.libro.titulo==titulo){
+        this.tlibro=soli.libro.titulo;
+        this.local=soli.ubicacion;
       }
     }
 
-    for (let ubt of this.ubicacionListaTitulo){
-      console.log("Titulo Ubi")
-      console.log(ubt)
+    console.log(this.tlibro)
+    console.log(this.local)
+
+    for (let ub of this.ubicacionLista){
+        if (this.local!=ub.localizacion && this.tlibro!=ub.localizacion && ub.libro.titulo==titulo){
+          this.ubicacionListaTitulo.push(ub);
+        }else{
+          console.log("Libro pedido")
+          console.log(ub.length)
+        }
+    }
+    console.log(this.ubicacionListaTitulo.length)
+    if (this.ubicacionListaTitulo.length<=0){
+      this.noUbicaciones=true;
+    }else {
+      this.noUbicaciones=false;
     }
 
   }
+
+
+
+
 }

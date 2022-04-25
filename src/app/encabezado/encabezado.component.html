@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light top">
-  <div class="container-fluid">
+  <div style="width: 100%;top: 0; height: 80px; position: fixed; background: aliceblue" class="container-fluid">
     <a class="navbar-brand" href="#" >Virtual T-K</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Virtualte-K">
       <span class="navbar-toggler-icon"></span>
@@ -22,7 +22,7 @@
 
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/Ingreso">Ingresar</a>
+            <a class="nav-link active" aria-current="page" href="/Ingreso" *ngIf="HabilitarIngreso">Ingresar</a>
           </li>
         </ul>
 
@@ -30,7 +30,7 @@
 
 
         <!--<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
-        <button class="btn btn-outline-success" type="submit" (click)="Cerrar()">Cerrar Sesión</button>
+        <button class="btn btn-outline-success" type="submit" (click)="Cerrar()" *ngIf="HabilitarCerrar">Cerrar Sesión</button>
       </form>
     </div>
   </div>

@@ -3,6 +3,9 @@ import {LibrosService} from "../ConexionServicios/LibrosService";
 import {LibrosModelo} from "../Modelos/LibrosModelo";
 import {UbicacionService} from "../ConexionServicios/UbicacionService";
 import Swal from "sweetalert2";
+import {ActivatedRoute} from "@angular/router";
+import {SolicitudesService} from "../ConexionServicios/SolicitudesService";
+import {UbicacionModelo} from "../Modelos/UbicacionModelo";
 
 @Component({
   selector: 'app-registro-libros',
@@ -11,6 +14,8 @@ import Swal from "sweetalert2";
 })
 export class RegistroLibrosComponent implements OnInit {
 
+  libro:LibrosModelo=new LibrosModelo();
+  ubicacion:UbicacionModelo=new UbicacionModelo();
   idI:any;
   tituloI:any;
   autorI:any;
@@ -29,15 +34,71 @@ export class RegistroLibrosComponent implements OnInit {
   servicioUb:UbicacionService;
   librosLista: Array<any>=[];
 
-  constructor( servicio:LibrosService, servicioUb:UbicacionService) {
+  idL:any;
+  titulo:any;
+  editing:boolean=false;
+  libros:Array<any>=[];
+
+  idU:any;
+  ubicaciones:Array<any>=[];
+
+  idS:any;
+  solicitudes:Array<any>=[];
+
+  servicioSoli:SolicitudesService
+
+
+  constructor( servicio:LibrosService, servicioUb:UbicacionService,route:ActivatedRoute,servicioSoli:SolicitudesService) {
     this.servicio=servicio;
     this.servicioUb=servicioUb;
+    this.servicioSoli=servicioSoli;
     this.servicio.getLibros().subscribe((x:any)=>{
       this.librosLista=x
       console.log(x)
       console.log("Primera Lista")
     })
+    this.titulo=route.snapshot.params['titulo'];
 
+    if (this.titulo){
+      this.editing=true;
+      this.servicio.getLibros().subscribe((data:any)=>{
+        this.libros=data;
+          for (let lb of this.libros){
+            this.idL=lb._id;
+          }
+        this.libros=this.libros.find((m)=>{return m.titulo==this.titulo});
+
+      },(error)=> {
+        console.log(error);
+        }
+      );
+
+      this.servicioUb.getUbicacion().subscribe((data:any)=>{
+          this.ubicaciones=data;
+
+        this.ubicaciones=this.ubicaciones.find((m)=>{return m.libro.titulo==this.titulo});
+
+        },(error)=> {
+          console.log(error);
+        }
+      );
+
+      this.servicioSoli.getSolicitudes().subscribe((data:any)=>{
+          this.solicitudes=data;
+        for (let lb of this.solicitudes){
+          this.idS=lb._id;
+        }
+          this.solicitudes=this.solicitudes.find((m)=>{return m.libro.titulo==this.titulo});
+
+        },(error)=> {
+          console.log(error);
+        }
+      );
+    }else {
+      this.editing=false;
+    }
+    console.log("Inicio")
+    console.log(this.editing)
   }
 
   ngOnInit(): void {
@@ -47,7 +108,14 @@ export class RegistroLibrosComponent implements OnInit {
 
 
   Guardar(){
-    this.servicio.getLibros().subscribe((x:any)=>{
+    console.log(this.editing)
+    console.log(this.libros)
+    console.log(this.ubicaciones)
+    console.log(this.solicitudes)
+    console.log(this.idL)
+    console.log(this.idS)
+    console.log(this.idU)
+    /*this.servicio.getLibros().subscribe((x:any)=>{
       this.librosLista=x
       console.log(x)
       console.log("Nueva Lista")
@@ -59,13 +127,21 @@ export class RegistroLibrosComponent implements OnInit {
     {
       this.estado= false;
     }
-    // @ts-ignore
-    /*et clasificacion = document.getElementById("clasificacion").value;
-    console.log(clasificacion, "clasificacion")
-    console.log(this.clasificacionI)*/
-
 
     let libro={
+      "titulo" : this.tituloI,
+      "autores" : this.autorI,
+      "editorial" : this.editorialI,
+      "fecha_publicacion" :this.fechaPI,
+      "idioma" : this.idiomaI,
+      "clasificacion" : this.clasificacionI,
+      "resumen" : this.resumenI,
+      "link" : this.urlI,
+      "estado" : this.estado
+    }
+
+    let libro1={
+      "_id":this.idL,
       "titulo" : this.tituloI,
       "autores" : this.autorI,
       "editorial" : this.editorialI,
@@ -82,12 +158,10 @@ export class RegistroLibrosComponent implements OnInit {
       "localizacion":this.ubicacionI
     }
     console.log(this.tituloExist())
-    if (this.tituloExist()==false){
-      if(this.servicio.createLibros(libro)){
-        console.log("creado")
 
-      }else{
-        console.log("error Crear")
+    if (this.editing){
+      if(this.servicio.update(libro,"")){
+        console.log("creado")
         Swal.fire({
           position: 'top-end',
           icon: 'success',
@@ -95,16 +169,40 @@ export class RegistroLibrosComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500})
       }
-    } else {
-      console.log("Ya existe")
+    }else {
+      if (this.tituloExist()==false){
+
+        if(this.servicio.createLibros(libro)){
+          console.log("creado")
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Registro creado correctamente!',
+            showConfirmButton: false,
+            timer: 1500})
+        }
+
+      } else {
+        console.log("Ya existe")
+      }
     }
 
+    if (this.editing){
+      if (this.servicioUb.update(ubi,"")){
+        console.log("creado Ubicacion");
+      } else {
+        console.log("error Ubi");
+      }
 
-    if (this.servicioUb.create(ubi)){
-      console.log("creado Ubicacion");
-    } else {
-      console.log("error Ubi");
-    }
+    }else{
+      if (this.servicioUb.create(ubi)){
+        console.log("creado Ubicacion");
+      } else {
+        console.log("error Ubi");
+      }
+    }*/
+
+
     this.nuevo=true;
     this.guarda=false;
 

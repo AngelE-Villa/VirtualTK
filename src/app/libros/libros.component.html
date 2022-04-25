@@ -1,4 +1,4 @@
-<div>
+
 <table class="table">
   <tbody>
   <tr>
@@ -47,11 +47,20 @@
     <td class="resultado"><a href="{{libro.link}}">{{libro.link}}</a></td>
   </tr>
   </tbody>
-
+  <br>
 </table>
-  <td><button class="table" (click)="mostrar(libro.titulo)"> Localizaciones</button></td>
-<div *ngIf="mostrarUbicaciones"  >
-  <table class="table" >
+<div class="btn-ali">
+  <input type="button" class="btn-inferiores" (click)="mostrar(libro.titulo)" *ngIf="localizacion" value="Localizaciones">
+    <input type="button" class="btn-inferiores" routerLink="/RegistroLibros/{{libro.titulo}}" *ngIf="desabilitar" value="Editar">
+    <input type="button" class="btn-inferiores" value="Eliminar" *ngIf="desabilitar">
+
+  <br><br>
+</div>
+  <div *ngIf="mostrarUbicaciones"  >
+    <h5 style="text-align: center">El libro esta disponible en las siguiente/s ubicacion/es</h5>
+    <br>
+    <h5 style="text-align: center; color: red" *ngIf="noUbicaciones">No hay localizacion para este libro</h5>
+  <table class="table" style="margin-top: 5px">
     <tr *ngFor="let ubicacion of ubicacionListaTitulo">
       <td class="titulares">Localizacion</td>
       <td class="resultado">{{ubicacion.localizacion}}</td>

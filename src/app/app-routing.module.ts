@@ -8,6 +8,7 @@ import {LogginComponent} from "./loggin/loggin.component";
 import {RegistroLibrosComponent} from "./registro-libros/registro-libros.component";
 import {SolicitudesComponent} from "./solicitudes/solicitudes.component";
 import {ReservacionComponent} from "./reservacion/reservacion.component";
+import {LibrosComponent} from "./libros/libros.component";
 
 const routes: Routes = [
   {path:"Ingreso",component: InicioSessionComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path:"Listado", component: PaginaElementosComponent},
   {path: "Solicitud", component: SolicitudesComponent},
   {path:"Registro", component: LogginComponent},
+  {path:"RegistroLibros/:titulo", component: RegistroLibrosComponent},
   {path:"RegistroLibros", component: RegistroLibrosComponent},
   {path:"Reservacion/:localizacion/:titulo", component: ReservacionComponent}];
 

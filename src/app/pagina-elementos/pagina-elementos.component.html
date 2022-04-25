@@ -1,4 +1,14 @@
 <app-encabezado></app-encabezado>
+<br>
+<h1 style="text-align: center">Listado de Libros</h1>
+<br>
+<div class="busqueda">
+  <input  type="text" class="form-control" name="listadoLibrosfiltro" placeholder="Search" [(ngModel)]="listadoLibrosfiltro">
+</div>
 
-<app-libros *ngFor="let libro of librosLista" [libro]="libro" ></app-libros>
+<app-libros *ngFor="let libro of listaLibros | filtroListado:listadoLibrosfiltro " [libro]="libro" ></app-libros>
+<div *ngIf="listadoLibrosfiltro.length<=0">
+  <br><br>
+  <h2 style="text-align: center; color: red">NO HAY COINCIDENCIAS</h2>
+</div>
 <app-pie></app-pie>

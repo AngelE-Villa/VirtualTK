@@ -21,17 +21,16 @@ export class EncabezadoComponent implements OnInit {
   desabilitar:boolean=false;
   listaUser: Array<any>=[];
   listaUserFil:Array<any>=[];
+  HabilitarIngreso=false;
+  HabilitarCerrar=false;
 
     ngOnInit(): void {
       let name = localStorage.getItem('usu');
-      console.log(name)
       this.user.getUsuarios().subscribe(x=> {
         this.listaUser=x;
         for (let u of this.listaUser){
           if (u.usuario==name){
             this.listaUserFil.push(u);
-            console.log("Usuario Fitrado")
-            console.log(u)
           }else{
             console.log("No entra")
           }
@@ -40,6 +39,14 @@ export class EncabezadoComponent implements OnInit {
 
       if (name=="admin"){
         this.desabilitar=true;
+      }
+      console.log(name)
+      if (name==null){
+        this.HabilitarIngreso=true;
+        this.HabilitarCerrar=false;
+      }else{
+        this.HabilitarCerrar=true;
+        this.HabilitarIngreso=false;
       }
   }
 

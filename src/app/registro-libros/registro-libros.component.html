@@ -1,12 +1,11 @@
 <html>
-<app-encabezado></app-encabezado>
+  <app-encabezado></app-encabezado>
 <head>
   <title>INGRESO DE LIBROS</title>
   <link rel="stylesheet" href="registro-libros.component.css">
 </head>
 <body>
-<div>
--
+<div>-->
 <form method="POST" class="formulario">
   <h4>Ingreso de Libros</h4>
   <img src="https://www.matematicasonline.es/BachilleratoCCNN/Segundo/imagenes/libro.png" alt="">
@@ -96,15 +95,13 @@
     <option>Disponible</option>
     <option>No Disponible</option>
   </select>
-  <textarea class="arearesumen" name="resumen" id="resumen" cols="40" rows="5" placeholder="Resúmen" required [(ngModel)]="resumenI"></textarea>
+  <textarea class="arearesumen" name="resumen" id="resumen" cols="40" rows="3" placeholder="Resúmen" required [(ngModel)]="resumenI"></textarea>
   <div *ngIf="guarda">
     <input class="botons" type="submit" value="Registrar" (click)="Guardar()">
   </div>
   <div *ngIf="nuevo">
     <input class="botons" type="submit" value="Ingresar Nuevo" (click)="Reload()">
   </div>
-
-
 </form>
 </div>
 </body>

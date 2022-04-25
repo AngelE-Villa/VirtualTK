@@ -29,6 +29,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {PrimeIcons, PrimeNGConfig, PrimeTemplate} from "primeng/api";
 import {CardModule} from "primeng/card";
 import { ReservacionComponent } from './reservacion/reservacion.component';
+import { FiltroListadoPipe } from './pipes/filtro-listado.pipe';
 
 
 
@@ -47,7 +48,8 @@ import { ReservacionComponent } from './reservacion/reservacion.component';
     RegistroLibrosComponent,
     LibrosComponent,
     SolicitudesComponent,
-    ReservacionComponent
+    ReservacionComponent,
+    FiltroListadoPipe
   ],
   imports: [
     BrowserModule,
