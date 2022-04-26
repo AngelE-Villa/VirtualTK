@@ -8,7 +8,7 @@
 <div>-->
 <form method="POST" class="formulario">
   <h4>Ingreso de Libros</h4>
-  <img src="https://www.matematicasonline.es/BachilleratoCCNN/Segundo/imagenes/libro.png" alt="">
+  <img src="/assets/img/libro.png" alt="">
   <br>
   <div style="color: red; font-size: small; text-align: center " *ngIf="camposvacios">********Campos vacios*********</div>
   <br>
@@ -18,7 +18,7 @@
   <input class="controls" type="date" name="fecha" id="fecPubl" placeholder="Fecha de Publicacion" required [(ngModel)]="libro.fecha_publicacion">
   <input class="controls" type="text" name="idioma" id="idioma" placeholder="Idioma" required [(ngModel)]="libro.idioma">
   <select class="controls" name="Clasificacion" id="clasificacion" required [(ngModel)]="libro.clasificacion">
-    <option selected disabled hidden value value="">Clasificación</option>
+    <option selected disabled hidden value="">Clasificación</option>
     <option style="font-weight: bold">000 Generalidades</option>
     <option>010 Bibliografía</option>
     <option>020 Bibliotecología y ciencias de la información</option>
