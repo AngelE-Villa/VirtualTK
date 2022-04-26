@@ -165,12 +165,11 @@ export class SolicitudesComponent implements OnInit {
   }
 
   finalizarElimnar(){
-    console.log(this.idSolicitud+"  F-Eliminar")
-    console.log(this.servicio.delete(this.idSolicitud))
-    this.servicio.delete(this.idSolicitud);
+    this.servicio.delete(this.idSolicitud).subscribe(res=>{
       this.editarCorrecto();
       this.visibilidadE=false;
-    window.location.reload();
+      window.location.reload();
+    });
   }
 
 

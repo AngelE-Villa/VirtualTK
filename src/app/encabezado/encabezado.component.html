@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light top">
-  <div style="width: 100%;top: 0; height: 80px; position: fixed; background: aliceblue" class="container-fluid">
-    <a class="navbar-brand" href="#">Virtual T-K</a>
+  <div style="width: 100%;top: 0; height: 80px; position: fixed; background: black" class="container-fluid">
+    <a class="navbar-brand" href="#"><img style="width: 250px;height: 80px" src="/assets/img/logo.jpeg" alt=""></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Virtualte-K">
       <span class="navbar-toggler-icon"></span>
@@ -8,18 +8,29 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/Listado">Listado</a>
+          <a class="nav-link active" style="color: white" aria-current="page" href="/Listado">Listado</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="/Solicitud" *ngIf="desabilitar">Solicitudes</a>
+          <a class="nav-link " style="color: white" href="/Solicitud" *ngIf="desabilitar">Solicitudes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="/RegistroLibros" *ngIf="desabilitar">Ingresar Libros</a>
+          <a class="nav-link " style="color: white" href="/RegistroLibros" *ngIf="desabilitar">Ingresar Libros</a>
         </li>
 
 
       </ul>
       <form class="d-flex">
+        <div *ngIf="femenino" >
+          <div>
+            <img usemap="#workmap" src="https://icon-library.com/images/free-avatar-icon/free-avatar-icon-10.jpg" alt="" style="width:50px; height:50px">
+          </div>
+        </div>
+
+        <div *ngIf="masculino">
+          <div>
+            <img src="https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg" alt="" style="width:50px; height:50px">
+          </div>
+        </div>
 
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
@@ -29,34 +40,7 @@
         <a class="nav-link disable me-auto" style="width: auto"
            *ngFor="let us of listaUserFil">{{us.nombres}} {{us.apellidos}}</a>
 
-        <div *ngIf="femenino" >
-          <div class="cuerpo">
-          <div class="action">
-            <div class="profile" onclick="menuToggle();">
-              <img src="https://icon-library.com/images/free-avatar-icon/free-avatar-icon-10.jpg" alt="" style="width:50px; height:50px">
-            </div>
-            <div class="menu">
-              <h4><span>Perfil de Usuario</span></h4>
-              <ul>
-                <li><img src="/assets/img/user.png"><a href="#">Mi Perfil</a></li>
-                <li><img src="/assets/img/edit.png"><a href="#">Editar</a></li>
-                <li><img src="/assets/img/log-out.png"><a href="#">Cerrar Sesión</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-          <script>
-            function menuToggle(){
-              const toggleMenu = document.querySelector('.menu');
-              toggleMenu.classList.toggle('active')
-            }
-          </script>
-        </div>
-        <div *ngIf="masculino">
-          <div>
-            <img src="https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg" alt="" style="width:50px; height:50px">
-          </div>
-        </div>
+
         <div>
           <button class="btn btn-outline-success" type="submit" (click)="Cerrar()" *ngIf="HabilitarCerrar">Cerrar Sesión
           </button>

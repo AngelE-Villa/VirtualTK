@@ -15,6 +15,10 @@ export class EncabezadoComponent implements OnInit {
   opc:boolean;
   user: UserService;
   router:Router
+
+
+  abrir:String="visibility: hidden; opacity: 0;";
+  cerrar:String="visibility: hidden; opacity: 0;";
   constructor(user: UserService,router:Router) {
     this.user=user;
     this.router=router;
