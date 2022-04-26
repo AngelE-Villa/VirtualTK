@@ -23,7 +23,7 @@ const routes: Routes = [
   {path:"Reservacion/:localizacion/:titulo", component: ReservacionComponent}];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{useHash:true, relativeLinkResolution:'legacy'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
